@@ -103,13 +103,16 @@ body {
 }
 
 .team-container {
-  margin: 20px 15px;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
   display: flex;
   flex-direction: row;
 }
 
 .team-name {
   margin-top: 8px;
+  color: black;
 }
 
 .team-info {
@@ -140,4 +143,24 @@ body {
   margin-right: 50px;
 }
 
+.dropdown {
+  position: relative;
+  margin-bottom: 40px;
+  width: 100%;
+  background-color: black;
+  margin-left: 10px;
+  margin-right: 10px;
+}
 
+.dropdown-menu {
+  position: absolute;
+  background-color: black;
+  width: 100%;
+  
+
+}
+
+.expand {
+  width: 100%;
+  
+}
