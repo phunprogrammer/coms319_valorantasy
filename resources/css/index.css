@@ -3,6 +3,7 @@
   box-sizing: border-box;
   margin: 0px;
   padding: 0px;
+  --font-color: #3C6E71;
 }
 
 
@@ -19,12 +20,15 @@ header {
   justify-content: flex-end;
   align-items: center;
   padding: 30px 10%;
-  background-color: #24252A;
+  background-color: white;
   max-height: 55px;
+
+  box-shadow: 0 15px 30px 0 rgba(0,0,0,0.11),
+  0 5px 15px 0 rgba(0,0,0,0.08);
 }
 
 .logo {
-  width: 200px;
+  max-width: 300px;
   height: 50px;
   cursor: pointer;
   margin-right: auto;
@@ -37,18 +41,16 @@ header {
 .nav-links li {
   display: inline-block;
   padding: 0px 20px;
-  background-color: 24252A;
-
 }
 
 .nav-links li a {
-  background-color: 24252A;
-  color: #0667FF;
+  color: var(--font-color);
+  font-weight: bold;
   transition: all 0.3s ease 0s;
 }
 
 .nav-links li a:hover {
-  color: #CD17FF;
+  color: white;
   transition: all 0.3s ease 0s;
 
 }
@@ -59,16 +61,17 @@ header {
 
 .abt-button{
   padding: 9px 25px;
-  background-color: #0667FF;
+  background-color: #3C6E71;
   border: none;
   border-radius: 50px;
   cursor: pointer;
+  font-weight: bold;  
   transition: all 0.3s ease 0s;
   margin-left: 25px;
 }
 
 .abt_button:hover {
-  background-color: #CD17FF;
+  background-color: white;
   transition: all 0.3s ease 0s;
 }
 
@@ -77,23 +80,22 @@ header {
 }
 
 body {
-  background-color: white;
+  background-color: #D9D9D9;
 }
 
 .team-list-container {
   justify-content: space-between;
-  background-color: lightgray;
   margin: 0px 200px;
   display: flex;
   flex-direction: column;
 }
 
 .title {
-  padding-top: 20px;
+  padding-top: 30px;
   text-align: center;
-  background-color: lightgray;
   font-family: sans-serif;
   padding-bottom: 20px;
+  color: var(--font-color);
 }
 
 .team-logo {
@@ -114,15 +116,18 @@ body {
 .team-container-title {
   display: flex;
   flex-direction: row;
-  border: 2px solid black;
   background: white;
   user-select: none;
   cursor: pointer;
   margin: 0 var(--xy-margin);
   padding: var(--xy-padding);
-  border-radius: var(--border-radius);
   transition: 0.4s;
   transition-delay: 0.4s;
+  transition-property: border-radius;
+  
+  box-shadow: 0 15px 30px 0 rgba(0,0,0,0.11),
+    0 5px 15px 0 rgba(0,0,0,0.08);
+  border-radius: var(--border-radius);
 }
 
 .team-container-title.active {
@@ -131,7 +136,7 @@ body {
 }
 
 .team-container-title:hover {
-  background-color: rgb(232, 232, 232);
+  background-color: #D9D9D9;
 }
 
 .team-container-content {
@@ -139,8 +144,9 @@ body {
   padding: 0 var(--xy-padding);
   line-height: 2;
   font-size: 0.85em;
-  border: 2px solid black;
-  border-top: none;
+  box-shadow: 0 15px 30px 0 rgba(0,0,0,0.11),
+  0 5px 15px 0 rgba(0,0,0,0.08);
+  border-top: 2px dashed black;
   background-color: white;
   border-radius: 0 0 var(--border-radius) var(--border-radius);
 }
@@ -150,6 +156,7 @@ body {
   max-height: 0;
   transition: 0.5s;
   transition-delay: 0s;
+  transition-property: max-height;
 }
 
 .team-container-content-wrapper.active {
