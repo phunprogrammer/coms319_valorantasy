@@ -3,7 +3,7 @@
   box-sizing: border-box;
   margin: 0px;
   padding: 0px;
-  --font-color: #3C6E71;
+  --font-color: #284B63;
 }
 
 
@@ -61,7 +61,8 @@ header {
 
 .abt-button{
   padding: 9px 25px;
-  background-color: #3C6E71;
+  background-color: var(--font-color);
+  color: white;
   border: none;
   border-radius: 50px;
   cursor: pointer;
@@ -111,6 +112,9 @@ body {
   margin: 1em 0;
   font-size: 20px;
   font-family: 'Inter', sans-serif;
+  box-shadow: 0 15px 30px 0 rgba(0,0,0,0.11),
+  0 5px 15px 0 rgba(0,0,0,0.08);
+  border-radius: var(--border-radius);
 }
 
 .team-container-title {
@@ -119,14 +123,11 @@ body {
   background: white;
   user-select: none;
   cursor: pointer;
-  margin: 0 var(--xy-margin);
   padding: var(--xy-padding);
   transition: 0.4s;
   transition-delay: 0.4s;
   transition-property: border-radius;
-  
-  box-shadow: 0 15px 30px 0 rgba(0,0,0,0.11),
-    0 5px 15px 0 rgba(0,0,0,0.08);
+  color: var(--font-color);
   border-radius: var(--border-radius);
 }
 
@@ -136,17 +137,14 @@ body {
 }
 
 .team-container-title:hover {
-  background-color: #D9D9D9;
+  background-color: #eeeeee;
 }
 
 .team-container-content {
-  margin: 0 var(--xy-margin);
   padding: 0 var(--xy-padding);
   line-height: 2;
   font-size: 0.85em;
-  box-shadow: 0 15px 30px 0 rgba(0,0,0,0.11),
-  0 5px 15px 0 rgba(0,0,0,0.08);
-  border-top: 2px dashed black;
+  border-top: 2px dashed var(--font-color);
   background-color: white;
   border-radius: 0 0 var(--border-radius) var(--border-radius);
 }
@@ -166,7 +164,8 @@ body {
 
 .team-name {
   margin-top: 8px;
-  color: black;
+  color: var(--font-color);
+  font-weight: bold;
 }
 
 .team-info {
