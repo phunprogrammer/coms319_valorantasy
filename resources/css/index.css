@@ -10,7 +10,7 @@
 
 li, a, button {
   font-family: sans-serif;
-  font-weight: 500;
+  font-weight: bold;
   font-size: 16px;
   text-decoration: none;
 }
@@ -45,12 +45,11 @@ header {
 
 .nav-links li a {
   color: var(--font-color);
-  font-weight: bold;
   transition: all 0.3s ease 0s;
 }
 
 .nav-links li a:hover {
-  color: white;
+  color: #5487aa;
   transition: all 0.3s ease 0s;
 
 }
@@ -72,11 +71,11 @@ header {
 }
 
 .abt_button:hover {
-  background-color: white;
+  background-color: #5487aa;
   transition: all 0.3s ease 0s;
 }
 
-.abt_button:active {
+.abt_button:active {  
   opacity: 80%;
 }
 
@@ -108,7 +107,6 @@ body {
 .team-container {
   --xy-padding: 10px;
   --border-radius: 12px;
-  --xy-margin: 10px;
   margin: 1em 0;
   font-size: 20px;
   font-family: 'Inter', sans-serif;
@@ -209,5 +207,4 @@ body {
 
 .expand {
   width: 100%;
-  
 }
