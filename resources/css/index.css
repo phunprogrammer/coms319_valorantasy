@@ -1,0 +1,166 @@
+
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+
+
+li, a, button {
+  font-family: sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 30px 10%;
+  background-color: #24252A;
+  max-height: 55px;
+}
+
+.logo {
+  width: 200px;
+  height: 50px;
+  cursor: pointer;
+  margin-right: auto;
+}
+
+.nav-links {
+  list-style: none;
+}
+
+.nav-links li {
+  display: inline-block;
+  padding: 0px 20px;
+  background-color: 24252A;
+
+}
+
+.nav-links li a {
+  background-color: 24252A;
+  color: #0667FF;
+  transition: all 0.3s ease 0s;
+}
+
+.nav-links li a:hover {
+  color: #CD17FF;
+  transition: all 0.3s ease 0s;
+
+}
+
+.nav-links li a:active {
+  opacity: 80%;
+}
+
+.abt-button{
+  padding: 9px 25px;
+  background-color: #0667FF;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  margin-left: 25px;
+}
+
+.abt_button:hover {
+  background-color: #CD17FF;
+  transition: all 0.3s ease 0s;
+}
+
+.abt_button:active {
+  opacity: 80%;
+}
+
+body {
+  background-color: grey;
+}
+
+.team-list-container {
+  justify-content: space-between;
+  background-color: white;
+  margin: 0px 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  padding-top: 20px;
+  text-align: center;
+  font-family: sans-serif;
+  background-color: grey;
+  padding-bottom: 20px;
+}
+
+.team-logo {
+  width: 100px;
+  height: 100px;
+  min-width: 100px;
+}
+
+.team-container {
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.team-name {
+  margin-top: 8px;
+  color: black;
+}
+
+.team-info {
+  margin-left: 10px;
+  margin-right: 10px;
+  border-style: solid;
+  border-width: 3px;
+  border-color: black;
+  border-radius: 6px;
+  padding: 2px;
+  text-align: center;
+  height: 100px;
+  width: 100%;
+
+}
+
+.team-stats {
+  list-style-type: none;
+  padding-top: 15px;
+  justify-content: space-evenly;
+  display: flex;
+}
+
+.team-stats li{
+  display: inline-block;
+  padding: 0px 20px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.dropdown {
+  position: relative;
+  margin-bottom: 40px;
+  width: 100%;
+  background-color: black;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  background-color: black;
+  width: 100%;
+  
+
+}
+
+.expand {
+  width: 100%;
+  
+}
