@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=s, initial-scale=1.0">
-    <title>Home-Page</title>
+    <title>Valorantasy: Fantasy Esports</title>
     <link rel="stylesheet" href="./resources/css/index.css">
-    <script src="./resources/js/index.js"></script>
+    <link rel="icon" href="./resources/img/logo-small.png">
+    <script src="./resources/js/index.js" defer></script>
 </head>
 <body>
-    <header id="navbar">
+    <header class="navbar">
         <img class="logo" src="./resources/img/logo-large.png" alt="logo">
         <nav>
             <ul class="nav-links">
@@ -25,175 +26,48 @@
             <h1>Select a team to view their stats!</h1>
         </div>
 
-        <!--100T-->
         <div class="team-container">
-            <img class="team-logo" src="./resources/img/100T.jpg" alt="100-thieves">
-            <div class="team-info">
-                <a class="team-name" href="#">100 Thieves <img src="./resources/img/US.jpg" alt="US flag" width="25px" height="15px"></a>
-                <div class="team-stats"> 
-                    <ul>
-                        <li><strong>MATCHES WON: </strong></li>
-                        <li><strong>MATCHES LOST: </strong></li>
-                        <li><strong>MATCH WIN%: </strong></li>
-                    </ul>
+            <div class="team-container-title">
+                <img class="team-logo" src="${teamLogo}" alt="${teamTag}">
+                <div class="team-info">
+                    <a class="team-name" href="#">${teamName} <img src="./resources/img/${teamCountry}.jpg" alt="${teamCountry}" width="25px" height="15px"></a>
+                    <div class="team-stats"> 
+                        <ul>
+                            <li><strong>MATCHES WON: </strong></li>
+                            <li><strong>MATCHES LOST: </strong></li>
+                            <li><strong>MATCH WIN%: </strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="team-container-content-wrapper">
+                <div class="team-container-content">
+                    <table class="player-table">
+                        <tr>
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>ACS</th>
+                                    <th>Kills</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>ACS</th>
+                                    <th>Kills</th>
+                                </tr>
+                            </tbody>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
-        <!--Sentinels-->
-        <div class="team-container">
-            <img class="team-logo" src="./resources/img/sen.jpg" alt="Sentinels">
-            <div class="team-info">
-                <a class="team-name" href="#">Sentinels <img src="./resources/img/US.jpg" alt="US flag" width="25px" height="15px"></a>
-                <div class="team-stats"> 
-                    <ul>
-                        <li><strong>MATCHES WON: </strong></li>
-                        <li><strong>MATCHES LOST: </strong></li>
-                        <li><strong>MATCH WIN%: </strong></li>
-                        
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!--CLOUD9-->
-        <div class="team-container">
-            <img class="team-logo" src="./resources/img/c9.jpg" alt="Cloud-9">
-            <div class="team-info">
-                <a class="team-name" href="#">Cloud-9 <img src="./resources/img/US.jpg" alt="US flag" width="25px" height="15px"></a>
-                <div class="team-stats"> 
-                    <ul>
-                        <li><strong>MATCHES WON: </strong></li>
-                        <li><strong>MATCHES LOST: </strong></li>
-                        <li><strong>MATCH WIN%: </strong></li>
-                        
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!--EG-->
-        <div class="team-container">
-            <img class="team-logo" src="./resources/img/eg.jpg" alt="Evil Geniuses">
-            <div class="team-info">
-                <a class="team-name" href="#">Evil Geniuses <img src="./resources/img/US.jpg" alt="US flag" width="25px" height="15px"></a>
-                <div class="team-stats"> 
-                    <ul>
-                        <li><strong>MATCHES WON: </strong></li>
-                        <li><strong>MATCHES LOST: </strong></li>
-                        <li><strong>MATCH WIN%: </strong></li>
-                        
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!--NRG-->
-        <div class="team-container">
-            <img class="team-logo" src="./resources/img/nrg.jpg" alt="NRG">
-            <div class="team-info">
-                <a class="team-name" href="#">NRG <img src="./resources/img/US.jpg" alt="US flag" width="25px" height="15px"></a>
-                <div class="team-stats"> 
-                    <ul>
-                        <li><strong>MATCHES WON: </strong></li>
-                        <li><strong>MATCHES LOST: </strong></li>
-                        <li><strong>MATCH WIN%: </strong></li>
-                        
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!--G2-->
-        <div class="team-container">
-            <img class="team-logo" src="./resources/img/G2.jpg" alt="G2">
-            <div class="team-info">
-                <a class="team-name" href="#">G2 <img src="./resources/img/US.jpg" alt="US flag" width="25px" height="15px"></a>
-                <div class="team-stats"> 
-                    <ul>
-                        <li><strong>MATCHES WON: </strong></li>
-                        <li><strong>MATCHES LOST: </strong></li>
-                        <li><strong>MATCH WIN%: </strong></li>
-                        
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!--FURIA-->
-        <div class="team-container">
-            <img class="team-logo" src="./resources/img/furia.jpg" alt="Furia">
-            <div class="team-info">
-                <a class="team-name" href="#">Furia <img src="./resources/img/brazil.jpg" alt="US flag" width="25px" height="15px"></a>
-                <div class="team-stats"> 
-                    <ul>
-                        <li><strong>MATCHES WON: </strong></li>
-                        <li><strong>MATCHES LOST: </strong></li>
-                        <li><strong>MATCH WIN%: </strong></li>
-                        
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!--LOUD-->
-        <div class="team-container">
-            <img class="team-logo" src="./resources/img/loud.jpg" alt="Loud">
-            <div class="team-info">
-                <a class="team-name" href="#">LOUD <img src="./resources/img/brazil.jpg" alt="US flag" width="25px" height="15px"></a>
-                <div class="team-stats"> 
-                    <ul>
-                        <li><strong>MATCHES WON: </strong></li>
-                        <li><strong>MATCHES LOST: </strong></li>
-                        <li><strong>MATCH WIN%: </strong></li>
-                        
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!--MIBR-->
-        <div class="team-container">
-            <img class="team-logo" src="./resources/img/mibr.jpg" alt="MIBR">
-            <div class="team-info">
-                <a class="team-name" href="#">MIBR <img src="./resources/img/brazil.jpg" alt="US flag" width="25px" height="15px"></a>
-                <div class="team-stats"> 
-                    <ul>
-                        <li><strong>MATCHES WON: </strong></li>
-                        <li><strong>MATCHES LOST: </strong></li>
-                        <li><strong>MATCH WIN%: </strong></li>
-                        
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!--KRU-->
-        <div class="team-container">
-            <img class="team-logo" src="./resources/img/kru.jpg" alt="KRU">
-            <div class="team-info">
-                <a class="team-name" href="#">KRU ESPORTS <img src="./resources/img/chile.jpg" alt="US flag" width="25px" height="15px"></a>
-                <div class="team-stats"> 
-                    <ul>
-                        <li><strong>MATCHES WON: </strong></li>
-                        <li><strong>MATCHES LOST: </strong></li>
-                        <li><strong>MATCH WIN%: </strong></li>
-                        
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!--LEV-->
-        <div class="team-container">
-            <img class="team-logo" src="./resources/img/lev.jpg" alt="LEV">
-            <div class="team-info">
-                <a class="team-name" href="#">Leviatan <img src="./resources/img/chile.jpg" alt="US flag" width="25px" height="15px"></a>
-                <div class="team-stats"> 
-                    <ul>
-                        <li><strong>MATCHES WON: </strong></li>
-                        <li><strong>MATCHES LOST: </strong></li>
-                        <li><strong>MATCH WIN%: </strong></li>
-                        
-                    </ul>
-                </div>
-            </div>
-        </div>
-        
     </main>
-    
-   
-
-
 </body>
+<footer>
+    <p>All data obtained from <a href="https://www.vlr.gg/">vlr.gg</a></p>
+</footer>
 </html>

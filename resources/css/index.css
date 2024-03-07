@@ -3,13 +3,14 @@
   box-sizing: border-box;
   margin: 0px;
   padding: 0px;
+  --font-color: #284B63;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
 }
 
 
 
 li, a, button {
-  font-family: sans-serif;
-  font-weight: 500;
   font-size: 16px;
   text-decoration: none;
 }
@@ -19,12 +20,15 @@ header {
   justify-content: flex-end;
   align-items: center;
   padding: 30px 10%;
-  background-color: #24252A;
+  background-color: white;
   max-height: 55px;
+
+  box-shadow: 0 15px 30px 0 rgba(0,0,0,0.11),
+  0 5px 15px 0 rgba(0,0,0,0.08);
 }
 
 .logo {
-  width: 200px;
+  max-width: 300px;
   height: 50px;
   cursor: pointer;
   margin-right: auto;
@@ -37,18 +41,15 @@ header {
 .nav-links li {
   display: inline-block;
   padding: 0px 20px;
-  background-color: 24252A;
-
 }
 
 .nav-links li a {
-  background-color: 24252A;
-  color: #0667FF;
+  color: var(--font-color);
   transition: all 0.3s ease 0s;
 }
 
 .nav-links li a:hover {
-  color: #CD17FF;
+  color: #5487aa;
   transition: all 0.3s ease 0s;
 
 }
@@ -59,41 +60,42 @@ header {
 
 .abt-button{
   padding: 9px 25px;
-  background-color: #0667FF;
+  background-color: var(--font-color);
+  color: white;
   border: none;
   border-radius: 50px;
   cursor: pointer;
+  font-weight: bold;  
   transition: all 0.3s ease 0s;
   margin-left: 25px;
 }
 
 .abt_button:hover {
-  background-color: #CD17FF;
+  background-color: #5487aa;
   transition: all 0.3s ease 0s;
 }
 
-.abt_button:active {
+.abt_button:active {  
   opacity: 80%;
 }
 
 body {
-  background-color: grey;
+  background-color: #D9D9D9;
 }
 
 .team-list-container {
   justify-content: space-between;
-  background-color: white;
   margin: 0px 200px;
   display: flex;
   flex-direction: column;
 }
 
 .title {
-  padding-top: 20px;
+  padding-top: 30px;
   text-align: center;
   font-family: sans-serif;
-  background-color: grey;
   padding-bottom: 20px;
+  color: var(--font-color);
 }
 
 .team-logo {
@@ -103,30 +105,72 @@ body {
 }
 
 .team-container {
-  margin-top: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
+  --xy-padding: 10px;
+  --border-radius: 12px;
+  margin: 1em 0;
+  font-size: 20px;
+  box-shadow: 0 15px 30px 0 rgba(0,0,0,0.11),
+  0 5px 15px 0 rgba(0,0,0,0.08);
+  border-radius: var(--border-radius);
+}
+
+.team-container-title {
   display: flex;
   flex-direction: row;
+  background: white;
+  user-select: none;
+  cursor: pointer;
+  padding: var(--xy-padding);
+  transition: 0.4s;
+  transition-delay: 0.4s;
+  transition-property: border-radius;
+  color: var(--font-color);
+  border-radius: var(--border-radius);
+}
+
+.team-container-title.active {
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  transition-delay: 0s;
+}
+
+.team-container-title:hover {
+  background-color: #eeeeee;
+}
+
+.team-container-content {
+  padding: 0 var(--xy-padding);
+  line-height: 2;
+  font-size: 0.85em;
+  border-top: 2px dashed var(--font-color);
+  background-color: white;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+.team-container-content-wrapper {
+  overflow: hidden;
+  max-height: 0;
+  transition: 0.5s;
+  transition-delay: 0s;
+  transition-property: max-height;
+}
+
+.team-container-content-wrapper.active {
+  max-height: 500px;
+  transition-delay: 0.2s;
 }
 
 .team-name {
   margin-top: 8px;
-  color: black;
+  color: var(--font-color);
+  font-weight: bold;
 }
 
 .team-info {
   margin-left: 10px;
   margin-right: 10px;
-  border-style: solid;
-  border-width: 3px;
-  border-color: black;
-  border-radius: 6px;
-  padding: 2px;
   text-align: center;
   height: 100px;
   width: 100%;
-
 }
 
 .team-stats {
@@ -156,11 +200,26 @@ body {
   position: absolute;
   background-color: black;
   width: 100%;
-  
-
 }
 
 .expand {
   width: 100%;
-  
+}
+
+.player-portrait {
+  width: 100px;
+}
+
+.player-table {
+  margin: 10px 0;
+  border-collapse: collapse;
+}
+
+footer {
+  text-align: center;
+  margin-top: 50px;
+  padding: 20px 0;
+  background-color: white;
+  box-shadow: 0 15px 30px 0 rgba(0,0,0,0.11),
+  0 5px 15px 0 rgba(0,0,0,0.08);
 }
