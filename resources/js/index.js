@@ -1,10 +1,6 @@
 var teams = [ "100t", "c9", "eg", "fur", "g2", "kru", "lev", "loud", "mibr", "nrg", "sen" ];
 
-for (let i = 0; i < teams.length; i++) {
-    fetch(`./resources/data/teams/${teams[i]}.json`)
-        .then(response => response.json())
-        .then(team => loadTeam(team));
-}
+fetchTeams();
 
 const accordion = document.getElementsByClassName("team-container-title");
 
@@ -13,6 +9,14 @@ for (let i = 0; i < accordion.length; i++) {
         this.nextElementSibling.classList.toggle('active');
         this.classList.toggle('active');
     })
+}
+
+async function fetchTeams() {
+    for (let i = 0; i < teams.length; i++) {
+        const response = await fetch(`./resources/data/teams/${teams[i]}.json`);
+        const team = await response.json();
+        loadTeam(team);
+    }
 }
 
 function loadTeam(team) {
