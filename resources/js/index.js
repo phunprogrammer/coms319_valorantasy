@@ -24,6 +24,9 @@ function loadTeam(team) {
     var teamList = document.getElementsByClassName("team-list-container")[0];
     var teamContainer = document.createElement("div");
 
+    
+
+
     teamContainer.className = "team-container";
     teamContainer.innerHTML = `
         <div class="team-container-title">
@@ -40,10 +43,158 @@ function loadTeam(team) {
             </div>
         </div>
         <div class="team-container-content-wrapper">
-            <div class="team-container-content">
-                <p>PLAYER 1. </p>
+                <div class="team-container-content">
+                    <table class="player-table" border="1">
+                        <tr>
+                            <thead>
+                                <tr>
+                                    <td>
+                                        <img class="map-img" src="./resources/img/asc.jpg" alt="ascent" width="70" height="40">
+                                    </td>
+                                    <td colspan="9">Ascent Stats:</td>
+                                </tr>
+                                <tr>
+                                    <td>WIN%: 42%</td>
+                                    <td>W: 41</td>
+                                    <td>L: 50</td>
+                                    <td>AWIN%: 38%</td>
+                                    <td>RW: 30</td>
+                                    <td>RL: 51</td>
+                                    <td>DWIN%: 46%</td>
+                                    <td>RW: 42</td>
+                                    <td>RL: 45</td>
+                                </tr>
+                            </thead>
+                        </tr>
+                        <tr>
+                            <thead>
+                                <tr>
+                                    <td>
+                                        <img class="map-img" src="./resources/img/bind.jpg" alt="bind" width="70" height="40">
+                                    </td>
+                                    <td colspan="9">Bind Stats:</td>
+                                </tr>
+                                <tr>
+                                    <td>WIN%: 42%</td>
+                                    <td>W: 41</td>
+                                    <td>L: 50</td>
+                                    <td>AWIN%: 38%</td>
+                                    <td>RW: 30</td>
+                                    <td>RL: 51</td>
+                                    <td>DWIN%: 46%</td>
+                                    <td>RW: 42</td>
+                                    <td>RL: 45</td>
+                                </tr>
+                            </thead>
+                        </tr>
+                        <tr>
+                            <thead>
+                                <tr>
+                                    <td>
+                                        <img class="map-img" src="./resources/img/breeze.jpg" alt="breeze" width="70" height="40">
+                                    </td>
+                                    <td colspan="9">Breeze Stats:</td>
+                                </tr>
+                                <tr>
+                                    <td>WIN%: 42%</td>
+                                    <td>W: 41</td>
+                                    <td>L: 50</td>
+                                    <td>AWIN%: 38%</td>
+                                    <td>RW: 30</td>
+                                    <td>RL: 51</td>
+                                    <td>DWIN%: 46%</td>
+                                    <td>RW: 42</td>
+                                    <td>RL: 45</td>
+                                </tr>
+                            </thead>
+                        </tr>
+                        <tr>
+                            <thead>
+                                <tr>
+                                    <td>
+                                        <img class="map-img" src="./resources/img/icebox.jpg" alt="icebox" width="70" height="40">
+                                    </td>
+                                    <td colspan="9">Icebox Stats:</td>
+                                </tr>
+                                <tr>
+                                    <td>WIN%: 42%</td>
+                                    <td>W: 41</td>
+                                    <td>L: 50</td>
+                                    <td>AWIN%: 38%</td>
+                                    <td>RW: 30</td>
+                                    <td>RL: 51</td>
+                                    <td>DWIN%: 46%</td>
+                                    <td>RW: 42</td>
+                                    <td>RL: 45</td>
+                                </tr>
+                            </thead>
+                        </tr>
+                        <tr>
+                            <thead>
+                                <tr>
+                                    <td>
+                                        <img class="map-img" src="./resources/img/lotus.jpg" alt="lotus" width="70" height="40">
+                                    </td>
+                                    <td colspan="9">Lotus Stats:</td>
+                                </tr>
+                                <tr>
+                                    <td>WIN%: 42%</td>
+                                    <td>W: 41</td>
+                                    <td>L: 50</td>
+                                    <td>AWIN%: 38%</td>
+                                    <td>RW: 30</td>
+                                    <td>RL: 51</td>
+                                    <td>DWIN%: 46%</td>
+                                    <td>RW: 42</td>
+                                    <td>RL: 45</td>
+                                </tr>
+                            </thead>
+                        </tr>
+                        <tr>
+                            <thead>
+                                <tr>
+                                    <td>
+                                        <img class="map-img" src="./resources/img/split.jpg" alt="split" width="70" height="40">
+                                    </td>
+                                    <td colspan="9">Split Stats:</td>
+                                </tr>
+                                <tr>
+                                    <td>WIN%: 42%</td>
+                                    <td>W: 41</td>
+                                    <td>L: 50</td>
+                                    <td>AWIN%: 38%</td>
+                                    <td>RW: 30</td>
+                                    <td>RL: 51</td>
+                                    <td>DWIN%: 46%</td>
+                                    <td>RW: 42</td>
+                                    <td>RL: 45</td>
+                                </tr>
+                            </thead>
+                        </tr>
+                        <tr>
+                            <thead>
+                                <tr>
+                                    <td>
+                                        <img class="map-img" src="./resources/img/sunset.jpg" alt="sunset" width="70" height="40">
+                                    </td>
+                                    <td colspan="9">Sunset Stats:</td>
+                                </tr>
+                                <tr>
+                                    <td>WIN%: 42%</td>
+                                    <td>W: 41</td>
+                                    <td>L: 50</td>
+                                    <td>AWIN%: 38%</td>
+                                    <td>RW: 30</td>
+                                    <td>RL: 51</td>
+                                    <td>DWIN%: 46%</td>
+                                    <td>RW: 42</td>
+                                    <td>RL: 45</td>
+                                </tr>
+                            </thead>
+                        </tr>
+                    </table>
+                </div>
             </div>
-        </div>
     `;
     teamContainer.children[0].addEventListener('click', function () {
         this.nextElementSibling.classList.toggle('active');

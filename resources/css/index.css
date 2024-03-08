@@ -152,6 +152,8 @@ body {
   transition: 0.5s;
   transition-delay: 0s;
   transition-property: max-height;
+  overflow: auto;
+  
 }
 
 .team-container-content-wrapper.active {
@@ -213,6 +215,19 @@ body {
 .player-table {
   margin: 10px 0;
   border-collapse: collapse;
+  justify-content: space-evenly;
+  width: 100%;
+  border-width: 3px;
+}
+
+.player-table th, .player-table td {
+  text-align: center;
+  padding: 8px;
+  color: #284B63;
+}
+
+.player-table img {
+  vertical-align: middle;
 }
 
 footer {
