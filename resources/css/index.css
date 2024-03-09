@@ -87,6 +87,7 @@ body {
   margin: 0px 200px;
   display: flex;
   flex-direction: column;
+  min-height: 500px;
 }
 
 .title {
