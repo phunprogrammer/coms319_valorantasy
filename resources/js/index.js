@@ -44,7 +44,7 @@ function loadTeam(team) {
         </div>
         <div class="team-container-content-wrapper">
                 <div class="team-container-content">
-                    <table class="player-table" border="1">
+                    <table class="player-table">
                         <tr>
                             <thead>
                                 <tr>

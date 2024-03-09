@@ -226,12 +226,25 @@ body {
   color: #284B63;
 }
 
-.player-table img {
+.player-img {
   vertical-align: middle;
+  height: 75px;
+  width: 75px;
+  padding: 0px;
+}
+
+.player-flag {
+  width: 30px;
+  height: 15px;
 }
 
 em {
   color: grey;
+}
+
+tr {
+  border: 1px solid var(--font-color);
+  margin-bottom: 10px;
 }
 
 footer {
@@ -241,8 +254,6 @@ footer {
   background-color: white;
   box-shadow: 0 15px 30px 0 rgba(0,0,0,0.11),
   0 5px 15px 0 rgba(0,0,0,0.08);
-  position:absolute;
-  width:100%;
-  bottom:0px;
+  
 }
 
