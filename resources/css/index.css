@@ -227,11 +227,9 @@ body {
   color: #284B63;
 }
 
-.player-table thead, tr {
-  
+.player-table tbody, tr {
   border: 1px solid var(--font-color);
   margin-bottom: 10px;
-  
 }
 
 .player-table img {
