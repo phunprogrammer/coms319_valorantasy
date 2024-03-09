@@ -1,1 +1,79 @@
-{"status":"Success","data":{"name":"100 Thieves","tag":"100T","logo":"https://owcdn.net/img/603c00d5c5a08.png","id":"120","country":"United States","link":"https://vlr.gg/team/120","socials":[{"name":"100thieves.com","link":"https://100thieves.com/"},{"name":"twitter.com","link":"https://twitter.com/100Thieves"}],"earnings":"","players_item":[{"ign":"Boostio","link":"https://www.vlr.gg/player/604/boostio","id":"000000000000604","role":"player"},{"ign":"bang","link":"https://www.vlr.gg/player/3880/bang","id":"000000000003880","role":"player"},{"ign":"Cryocells","link":"https://www.vlr.gg/player/4147/cryocells","id":"000000000004147","role":"player"},{"ign":"eeiu","link":"https://www.vlr.gg/player/796/eeiu","id":"000000000000796","role":"player"},{"ign":"Asuna","link":"https://www.vlr.gg/player/601/asuna","id":"000000000000601","role":"player"}],"staff_item":[{"ign":"Zikz","link":"https://www.vlr.gg/player/26482/zikz","id":"000000000026482","role":"head coach"},{"ign":"Mikes","link":"https://www.vlr.gg/player/19343/mikes","id":"000000000019343","role":"assistant coach"}],"players":["000000000000604","000000000003880","000000000004147","000000000000796","000000000000601"],"staff":["000000000026482","000000000019343"]}}
+{
+  "status": "Success",
+  "data": {
+    "name": "100 Thieves",
+    "tag": "100T",
+    "logo": "https://owcdn.net/img/603c00d5c5a08.png",
+    "id": "120",
+    "country": "United States",
+    "link": "https://vlr.gg/team/120",
+    "socials": [
+      {
+        "name": "100thieves.com",
+        "link": "https://100thieves.com/"
+      },
+      {
+        "name": "twitter.com",
+        "link": "https://twitter.com/100Thieves"
+      }
+    ],
+    "earnings": "",
+    "players_item": [
+      {
+        "ign": "Boostio",
+        "link": "https://www.vlr.gg/player/604/boostio",
+        "id": "000000000000604",
+        "role": "player"
+      },
+      {
+        "ign": "bang",
+        "link": "https://www.vlr.gg/player/3880/bang",
+        "id": "000000000003880",
+        "role": "player"
+      },
+      {
+        "ign": "Cryocells",
+        "link": "https://www.vlr.gg/player/4147/cryocells",
+        "id": "000000000004147",
+        "role": "player"
+      },
+      {
+        "ign": "eeiu",
+        "link": "https://www.vlr.gg/player/796/eeiu",
+        "id": "000000000000796",
+        "role": "player"
+      },
+      {
+        "ign": "Asuna",
+        "link": "https://www.vlr.gg/player/601/asuna",
+        "id": "000000000000601",
+        "role": "player"
+      }
+    ],
+    "staff_item": [
+      {
+        "ign": "Zikz",
+        "link": "https://www.vlr.gg/player/26482/zikz",
+        "id": "000000000026482",
+        "role": "head coach"
+      },
+      {
+        "ign": "Mikes",
+        "link": "https://www.vlr.gg/player/19343/mikes",
+        "id": "000000000019343",
+        "role": "assistant coach"
+      }
+    ],
+    "players": [
+      "000000000000604",
+      "000000000003880",
+      "000000000004147",
+      "000000000000796",
+      "000000000000601"
+    ],
+    "staff": [
+      "000000000026482",
+      "000000000019343"
+    ]
+  }
+}

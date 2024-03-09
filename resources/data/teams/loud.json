@@ -1,1 +1,79 @@
-{"status":"Success","data":{"name":"LOUD","tag":"LOUD","logo":"https://owcdn.net/img/62bbec8dc1b9f.png","id":"6961","country":"Brazil","link":"https://vlr.gg/team/6961","socials":[{"name":"loud.gg","link":"https://loud.gg/"},{"name":"twitter.com","link":"https://twitter.com/LOUDgg"}],"earnings":"","players_item":[{"ign":"saadhak","link":"https://www.vlr.gg/player/727/saadhak","id":"000000000000727","role":"player"},{"ign":"Quick","link":"https://www.vlr.gg/player/1575/quick","id":"000000000001575","role":"player"},{"ign":"Less","link":"https://www.vlr.gg/player/8447/less","id":"000000000008447","role":"player"},{"ign":"tuyz","link":"https://www.vlr.gg/player/2408/tuyz","id":"000000000002408","role":"player"},{"ign":"cauanzin","link":"https://www.vlr.gg/player/6193/cauanzin","id":"000000000006193","role":"player"}],"staff_item":[{"ign":"peu","link":"https://www.vlr.gg/player/25910/peu","id":"000000000025910","role":"coach"},{"ign":"stkJ","link":"https://www.vlr.gg/player/5709/stkj","id":"000000000005709","role":"assistant coach"}],"players":["000000000000727","000000000001575","000000000008447","000000000002408","000000000006193"],"staff":["000000000025910","000000000005709"]}}
+{
+  "status": "Success",
+  "data": {
+    "name": "LOUD",
+    "tag": "LOUD",
+    "logo": "https://owcdn.net/img/62bbec8dc1b9f.png",
+    "id": "6961",
+    "country": "Brazil",
+    "link": "https://vlr.gg/team/6961",
+    "socials": [
+      {
+        "name": "loud.gg",
+        "link": "https://loud.gg/"
+      },
+      {
+        "name": "twitter.com",
+        "link": "https://twitter.com/LOUDgg"
+      }
+    ],
+    "earnings": "",
+    "players_item": [
+      {
+        "ign": "saadhak",
+        "link": "https://www.vlr.gg/player/727/saadhak",
+        "id": "000000000000727",
+        "role": "player"
+      },
+      {
+        "ign": "Quick",
+        "link": "https://www.vlr.gg/player/1575/quick",
+        "id": "000000000001575",
+        "role": "player"
+      },
+      {
+        "ign": "Less",
+        "link": "https://www.vlr.gg/player/8447/less",
+        "id": "000000000008447",
+        "role": "player"
+      },
+      {
+        "ign": "tuyz",
+        "link": "https://www.vlr.gg/player/2408/tuyz",
+        "id": "000000000002408",
+        "role": "player"
+      },
+      {
+        "ign": "cauanzin",
+        "link": "https://www.vlr.gg/player/6193/cauanzin",
+        "id": "000000000006193",
+        "role": "player"
+      }
+    ],
+    "staff_item": [
+      {
+        "ign": "peu",
+        "link": "https://www.vlr.gg/player/25910/peu",
+        "id": "000000000025910",
+        "role": "coach"
+      },
+      {
+        "ign": "stkJ",
+        "link": "https://www.vlr.gg/player/5709/stkj",
+        "id": "000000000005709",
+        "role": "assistant coach"
+      }
+    ],
+    "players": [
+      "000000000000727",
+      "000000000001575",
+      "000000000008447",
+      "000000000002408",
+      "000000000006193"
+    ],
+    "staff": [
+      "000000000025910",
+      "000000000005709"
+    ]
+  }
+}

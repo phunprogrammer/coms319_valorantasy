@@ -1,1 +1,72 @@
-{"status":"Success","data":{"name":"Cloud9","tag":"C9","logo":"https://owcdn.net/img/628addcbd509e.png","id":"188","country":"United States","link":"https://vlr.gg/team/188","socials":[{"name":"cloud9.gg","link":"https://cloud9.gg/"},{"name":"twitter.com","link":"https://twitter.com/C9VAL"}],"earnings":"","players_item":[{"ign":"vanity","link":"https://www.vlr.gg/player/7870/vanity","id":"000000000007870","role":"player"},{"ign":"Xeppaa","link":"https://www.vlr.gg/player/7871/xeppaa","id":"000000000007871","role":"player"},{"ign":"jakee","link":"https://www.vlr.gg/player/8742/jakee","id":"000000000008742","role":"player"},{"ign":"OXY","link":"https://www.vlr.gg/player/18796/oxy","id":"000000000018796","role":"player"},{"ign":"wippie","link":"https://www.vlr.gg/player/4373/wippie","id":"000000000004373","role":"player"}],"staff_item":[{"ign":"Immi","link":"https://www.vlr.gg/player/9815/immi","id":"000000000009815","role":"coach"}],"players":["000000000007870","000000000007871","000000000008742","000000000018796","000000000004373"],"staff":["000000000009815"]}}
+{
+  "status": "Success",
+  "data": {
+    "name": "Cloud9",
+    "tag": "C9",
+    "logo": "https://owcdn.net/img/628addcbd509e.png",
+    "id": "188",
+    "country": "United States",
+    "link": "https://vlr.gg/team/188",
+    "socials": [
+      {
+        "name": "cloud9.gg",
+        "link": "https://cloud9.gg/"
+      },
+      {
+        "name": "twitter.com",
+        "link": "https://twitter.com/C9VAL"
+      }
+    ],
+    "earnings": "",
+    "players_item": [
+      {
+        "ign": "vanity",
+        "link": "https://www.vlr.gg/player/7870/vanity",
+        "id": "000000000007870",
+        "role": "player"
+      },
+      {
+        "ign": "Xeppaa",
+        "link": "https://www.vlr.gg/player/7871/xeppaa",
+        "id": "000000000007871",
+        "role": "player"
+      },
+      {
+        "ign": "jakee",
+        "link": "https://www.vlr.gg/player/8742/jakee",
+        "id": "000000000008742",
+        "role": "player"
+      },
+      {
+        "ign": "OXY",
+        "link": "https://www.vlr.gg/player/18796/oxy",
+        "id": "000000000018796",
+        "role": "player"
+      },
+      {
+        "ign": "wippie",
+        "link": "https://www.vlr.gg/player/4373/wippie",
+        "id": "000000000004373",
+        "role": "player"
+      }
+    ],
+    "staff_item": [
+      {
+        "ign": "Immi",
+        "link": "https://www.vlr.gg/player/9815/immi",
+        "id": "000000000009815",
+        "role": "coach"
+      }
+    ],
+    "players": [
+      "000000000007870",
+      "000000000007871",
+      "000000000008742",
+      "000000000018796",
+      "000000000004373"
+    ],
+    "staff": [
+      "000000000009815"
+    ]
+  }
+}
