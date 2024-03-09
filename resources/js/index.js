@@ -51,7 +51,7 @@ function loadTeam(team) {
                                     <td>
                                         <img class="map-img" src="./resources/img/asc.jpg" alt="ascent" width="70" height="40">
                                     </td>
-                                    <td colspan="9">Ascent Stats:</td>
+                                    <td colspan="9">ASCENT STATS</td>
                                 </tr>
                                 <tr>
                                     <td>WIN%: 42%</td>
@@ -72,7 +72,7 @@ function loadTeam(team) {
                                     <td>
                                         <img class="map-img" src="./resources/img/bind.jpg" alt="bind" width="70" height="40">
                                     </td>
-                                    <td colspan="9">Bind Stats:</td>
+                                    <td colspan="9">BIND STATS</td>
                                 </tr>
                                 <tr>
                                     <td>WIN%: 42%</td>
@@ -93,7 +93,7 @@ function loadTeam(team) {
                                     <td>
                                         <img class="map-img" src="./resources/img/breeze.jpg" alt="breeze" width="70" height="40">
                                     </td>
-                                    <td colspan="9">Breeze Stats:</td>
+                                    <td colspan="9">BREEZE STATS</td>
                                 </tr>
                                 <tr>
                                     <td>WIN%: 42%</td>
@@ -114,7 +114,7 @@ function loadTeam(team) {
                                     <td>
                                         <img class="map-img" src="./resources/img/icebox.jpg" alt="icebox" width="70" height="40">
                                     </td>
-                                    <td colspan="9">Icebox Stats:</td>
+                                    <td colspan="9">ICEBOX STATS</td>
                                 </tr>
                                 <tr>
                                     <td>WIN%: 42%</td>
@@ -135,7 +135,7 @@ function loadTeam(team) {
                                     <td>
                                         <img class="map-img" src="./resources/img/lotus.jpg" alt="lotus" width="70" height="40">
                                     </td>
-                                    <td colspan="9">Lotus Stats:</td>
+                                    <td colspan="9">LOTUS STATS</td>
                                 </tr>
                                 <tr>
                                     <td>WIN%: 42%</td>
@@ -156,7 +156,7 @@ function loadTeam(team) {
                                     <td>
                                         <img class="map-img" src="./resources/img/split.jpg" alt="split" width="70" height="40">
                                     </td>
-                                    <td colspan="9">Split Stats:</td>
+                                    <td colspan="9">SPLIT STATS</td>
                                 </tr>
                                 <tr>
                                     <td>WIN%: 42%</td>
@@ -177,7 +177,7 @@ function loadTeam(team) {
                                     <td>
                                         <img class="map-img" src="./resources/img/sunset.jpg" alt="sunset" width="70" height="40">
                                     </td>
-                                    <td colspan="9">Sunset Stats:</td>
+                                    <td colspan="9">SUNSET STATS</td>
                                 </tr>
                                 <tr>
                                     <td>WIN%: 42%</td>
