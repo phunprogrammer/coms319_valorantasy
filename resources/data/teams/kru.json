@@ -1,1 +1,86 @@
-{"status":"Success","data":{"name":"KRÜ Esports","tag":"KRÜ","logo":"https://owcdn.net/img/63976677069e1.png","id":"2355","country":"Chile","link":"https://vlr.gg/team/2355","socials":[{"name":"kruesports.gg","link":"https://kruesports.gg"},{"name":"twitter.com","link":"https://twitter.com/KRUesports"}],"earnings":"","players_item":[{"ign":"Melser","link":"https://www.vlr.gg/player/1311/melser","id":"000000000001311","role":"player"},{"ign":"keznit","link":"https://www.vlr.gg/player/2462/keznit","id":"000000000002462","role":"player"},{"ign":"Klaus","link":"https://www.vlr.gg/player/2610/klaus","id":"000000000002610","role":"player"},{"ign":"mta","link":"https://www.vlr.gg/player/36169/mta","id":"000000000036169","role":"player"},{"ign":"Shyy","link":"https://www.vlr.gg/player/24007/shyy","id":"000000000024007","role":"player"}],"staff_item":[{"ign":"Atom","link":"https://www.vlr.gg/player/12871/atom","id":"000000000012871","role":"head coach"},{"ign":"ddx","link":"https://www.vlr.gg/player/11215/ddx","id":"000000000011215","role":"assistant coach"},{"ign":"Nyogen","link":"https://www.vlr.gg/player/2476/nyogen","id":"000000000002476","role":"staff"}],"players":["000000000001311","000000000002462","000000000002610","000000000036169","000000000024007"],"staff":["000000000012871","000000000011215","000000000002476"]}}
+{
+  "status": "Success",
+  "data": {
+    "name": "KRÜ Esports",
+    "tag": "KRÜ",
+    "logo": "https://owcdn.net/img/63976677069e1.png",
+    "id": "2355",
+    "country": "Chile",
+    "link": "https://vlr.gg/team/2355",
+    "socials": [
+      {
+        "name": "kruesports.gg",
+        "link": "https://kruesports.gg"
+      },
+      {
+        "name": "twitter.com",
+        "link": "https://twitter.com/KRUesports"
+      }
+    ],
+    "earnings": "",
+    "players_item": [
+      {
+        "ign": "Melser",
+        "link": "https://www.vlr.gg/player/1311/melser",
+        "id": "000000000001311",
+        "role": "player"
+      },
+      {
+        "ign": "keznit",
+        "link": "https://www.vlr.gg/player/2462/keznit",
+        "id": "000000000002462",
+        "role": "player"
+      },
+      {
+        "ign": "Klaus",
+        "link": "https://www.vlr.gg/player/2610/klaus",
+        "id": "000000000002610",
+        "role": "player"
+      },
+      {
+        "ign": "mta",
+        "link": "https://www.vlr.gg/player/36169/mta",
+        "id": "000000000036169",
+        "role": "player"
+      },
+      {
+        "ign": "Shyy",
+        "link": "https://www.vlr.gg/player/24007/shyy",
+        "id": "000000000024007",
+        "role": "player"
+      }
+    ],
+    "staff_item": [
+      {
+        "ign": "Atom",
+        "link": "https://www.vlr.gg/player/12871/atom",
+        "id": "000000000012871",
+        "role": "head coach"
+      },
+      {
+        "ign": "ddx",
+        "link": "https://www.vlr.gg/player/11215/ddx",
+        "id": "000000000011215",
+        "role": "assistant coach"
+      },
+      {
+        "ign": "Nyogen",
+        "link": "https://www.vlr.gg/player/2476/nyogen",
+        "id": "000000000002476",
+        "role": "staff"
+      }
+    ],
+    "players": [
+      "000000000001311",
+      "000000000002462",
+      "000000000002610",
+      "000000000036169",
+      "000000000024007"
+    ],
+    "staff": [
+      "000000000012871",
+      "000000000011215",
+      "000000000002476"
+    ]
+  }
+}

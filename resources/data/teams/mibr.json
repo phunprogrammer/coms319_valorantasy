@@ -1,1 +1,93 @@
-{"status":"Success","data":{"name":"MIBR","tag":"","logo":"https://owcdn.net/img/632be7626d6d9.png","id":"7386","country":"Brazil","link":"https://vlr.gg/team/7386","socials":[{"name":"mibr.gg","link":"https://mibr.gg/"},{"name":"twitter.com","link":"https://twitter.com/mibr"}],"earnings":"","players_item":[{"ign":"jzz","link":"https://www.vlr.gg/player/13093/jzz","id":"000000000013093","role":"player"},{"ign":"mazin","link":"https://www.vlr.gg/player/8872/mazin","id":"000000000008872","role":"player"},{"ign":"artzin","link":"https://www.vlr.gg/player/5957/artzin","id":"000000000005957","role":"player"},{"ign":"RgLMeister","link":"https://www.vlr.gg/player/5351/rglmeister","id":"000000000005351","role":"player"},{"ign":"frz","link":"https://www.vlr.gg/player/651/frz","id":"000000000000651","role":"player"}],"staff_item":[{"ign":"chivitz","link":"https://www.vlr.gg/player/32311/chivitz","id":"000000000032311","role":"manager"},{"ign":"fRoD","link":"https://www.vlr.gg/player/145/frod","id":"000000000000145","role":"coach"},{"ign":"bzkA","link":"https://www.vlr.gg/player/940/bzka","id":"000000000000940","role":"coach"},{"ign":"Iara","link":"https://www.vlr.gg/player/2466/iara","id":"000000000002466","role":"analyst"}],"players":["000000000013093","000000000008872","000000000005957","000000000005351","000000000000651"],"staff":["000000000032311","000000000000145","000000000000940","000000000002466"]}}
+{
+  "status": "Success",
+  "data": {
+    "name": "MIBR",
+    "tag": "",
+    "logo": "https://owcdn.net/img/632be7626d6d9.png",
+    "id": "7386",
+    "country": "Brazil",
+    "link": "https://vlr.gg/team/7386",
+    "socials": [
+      {
+        "name": "mibr.gg",
+        "link": "https://mibr.gg/"
+      },
+      {
+        "name": "twitter.com",
+        "link": "https://twitter.com/mibr"
+      }
+    ],
+    "earnings": "",
+    "players_item": [
+      {
+        "ign": "jzz",
+        "link": "https://www.vlr.gg/player/13093/jzz",
+        "id": "000000000013093",
+        "role": "player"
+      },
+      {
+        "ign": "mazin",
+        "link": "https://www.vlr.gg/player/8872/mazin",
+        "id": "000000000008872",
+        "role": "player"
+      },
+      {
+        "ign": "artzin",
+        "link": "https://www.vlr.gg/player/5957/artzin",
+        "id": "000000000005957",
+        "role": "player"
+      },
+      {
+        "ign": "RgLMeister",
+        "link": "https://www.vlr.gg/player/5351/rglmeister",
+        "id": "000000000005351",
+        "role": "player"
+      },
+      {
+        "ign": "frz",
+        "link": "https://www.vlr.gg/player/651/frz",
+        "id": "000000000000651",
+        "role": "player"
+      }
+    ],
+    "staff_item": [
+      {
+        "ign": "chivitz",
+        "link": "https://www.vlr.gg/player/32311/chivitz",
+        "id": "000000000032311",
+        "role": "manager"
+      },
+      {
+        "ign": "fRoD",
+        "link": "https://www.vlr.gg/player/145/frod",
+        "id": "000000000000145",
+        "role": "coach"
+      },
+      {
+        "ign": "bzkA",
+        "link": "https://www.vlr.gg/player/940/bzka",
+        "id": "000000000000940",
+        "role": "coach"
+      },
+      {
+        "ign": "Iara",
+        "link": "https://www.vlr.gg/player/2466/iara",
+        "id": "000000000002466",
+        "role": "analyst"
+      }
+    ],
+    "players": [
+      "000000000013093",
+      "000000000008872",
+      "000000000005957",
+      "000000000005351",
+      "000000000000651"
+    ],
+    "staff": [
+      "000000000032311",
+      "000000000000145",
+      "000000000000940",
+      "000000000002466"
+    ]
+  }
+}

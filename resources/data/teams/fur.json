@@ -1,1 +1,79 @@
-{"status":"Success","data":{"name":"FURIA","tag":"FUR","logo":"https://owcdn.net/img/632be843b7d51.png","id":"2406","country":"Brazil","link":"https://vlr.gg/team/2406","socials":[{"name":"furia.gg","link":"https://furia.gg/"},{"name":"twitter.com","link":"https://twitter.com/FURIA"}],"earnings":"","players_item":[{"ign":"kon4n","link":"https://www.vlr.gg/player/1671/kon4n","id":"000000000001671","role":"player"},{"ign":"mwzera","link":"https://www.vlr.gg/player/939/mwzera","id":"000000000000939","role":"player"},{"ign":"liazzi","link":"https://www.vlr.gg/player/2567/liazzi","id":"000000000002567","role":"player"},{"ign":"havoc","link":"https://www.vlr.gg/player/8706/havoc","id":"000000000008706","role":"player"},{"ign":"Khalil","link":"https://www.vlr.gg/player/1711/khalil","id":"000000000001711","role":"player"}],"staff_item":[{"ign":"Koy","link":"https://www.vlr.gg/player/8469/koy","id":"000000000008469","role":"coach"},{"ign":"lukzera","link":"https://www.vlr.gg/player/5375/lukzera","id":"000000000005375","role":"assistant coach"}],"players":["000000000001671","000000000000939","000000000002567","000000000008706","000000000001711"],"staff":["000000000008469","000000000005375"]}}
+{
+  "status": "Success",
+  "data": {
+    "name": "FURIA",
+    "tag": "FUR",
+    "logo": "https://owcdn.net/img/632be843b7d51.png",
+    "id": "2406",
+    "country": "Brazil",
+    "link": "https://vlr.gg/team/2406",
+    "socials": [
+      {
+        "name": "furia.gg",
+        "link": "https://furia.gg/"
+      },
+      {
+        "name": "twitter.com",
+        "link": "https://twitter.com/FURIA"
+      }
+    ],
+    "earnings": "",
+    "players_item": [
+      {
+        "ign": "kon4n",
+        "link": "https://www.vlr.gg/player/1671/kon4n",
+        "id": "000000000001671",
+        "role": "player"
+      },
+      {
+        "ign": "mwzera",
+        "link": "https://www.vlr.gg/player/939/mwzera",
+        "id": "000000000000939",
+        "role": "player"
+      },
+      {
+        "ign": "liazzi",
+        "link": "https://www.vlr.gg/player/2567/liazzi",
+        "id": "000000000002567",
+        "role": "player"
+      },
+      {
+        "ign": "havoc",
+        "link": "https://www.vlr.gg/player/8706/havoc",
+        "id": "000000000008706",
+        "role": "player"
+      },
+      {
+        "ign": "Khalil",
+        "link": "https://www.vlr.gg/player/1711/khalil",
+        "id": "000000000001711",
+        "role": "player"
+      }
+    ],
+    "staff_item": [
+      {
+        "ign": "Koy",
+        "link": "https://www.vlr.gg/player/8469/koy",
+        "id": "000000000008469",
+        "role": "coach"
+      },
+      {
+        "ign": "lukzera",
+        "link": "https://www.vlr.gg/player/5375/lukzera",
+        "id": "000000000005375",
+        "role": "assistant coach"
+      }
+    ],
+    "players": [
+      "000000000001671",
+      "000000000000939",
+      "000000000002567",
+      "000000000008706",
+      "000000000001711"
+    ],
+    "staff": [
+      "000000000008469",
+      "000000000005375"
+    ]
+  }
+}
