@@ -28,9 +28,6 @@ function loadTeam(team) {
     var teamList = document.getElementsByClassName("team-list-container")[0];
     var teamContainer = document.createElement("div");
 
-    
-
-
     teamContainer.className = "team-container";
     teamContainer.innerHTML = `
         <div class="team-container-title">
@@ -204,5 +201,6 @@ function loadTeam(team) {
         this.nextElementSibling.classList.toggle('active');
         this.classList.toggle('active');
     });
+    
     teamList.appendChild(teamContainer);
 }
