@@ -1,1 +1,93 @@
-{"status":"Success","data":{"name":"Leviatán","tag":"LEV","logo":"https://owcdn.net/img/61b8888cc3860.png","id":"2359","country":"Chile","link":"https://vlr.gg/team/2359","socials":[{"name":"leviatan.gg","link":"https://leviatan.gg"},{"name":"twitter.com","link":"https://twitter.com/LeviatanGG"}],"earnings":"","players_item":[{"ign":"kiNgg","link":"https://www.vlr.gg/player/8549/kingg","id":"000000000008549","role":"player"},{"ign":"tex","link":"https://www.vlr.gg/player/1818/tex","id":"000000000001818","role":"player"},{"ign":"Mazino","link":"https://www.vlr.gg/player/7603/mazino","id":"000000000007603","role":"player"},{"ign":"aspas","link":"https://www.vlr.gg/player/8480/aspas","id":"000000000008480","role":"player"},{"ign":"C0M","link":"https://www.vlr.gg/player/619/c0m","id":"000000000000619","role":"player"}],"staff_item":[{"ign":"nzr","link":"https://www.vlr.gg/player/725/nzr","id":"000000000000725","role":"Sub"},{"ign":"Daykiry","link":"https://www.vlr.gg/player/19302/daykiry","id":"000000000019302","role":"manager"},{"ign":"goked","link":"https://www.vlr.gg/player/3055/goked","id":"000000000003055","role":"head coach"},{"ign":"Itopata","link":"https://www.vlr.gg/player/333/itopata","id":"000000000000333","role":"assistant coach"}],"players":["000000000008549","000000000001818","000000000007603","000000000008480","000000000000619"],"staff":["000000000000725","000000000019302","000000000003055","000000000000333"]}}
+{
+  "status": "Success",
+  "data": {
+    "name": "Leviatán",
+    "tag": "LEV",
+    "logo": "https://owcdn.net/img/61b8888cc3860.png",
+    "id": "2359",
+    "country": "Chile",
+    "link": "https://vlr.gg/team/2359",
+    "socials": [
+      {
+        "name": "leviatan.gg",
+        "link": "https://leviatan.gg"
+      },
+      {
+        "name": "twitter.com",
+        "link": "https://twitter.com/LeviatanGG"
+      }
+    ],
+    "earnings": "",
+    "players_item": [
+      {
+        "ign": "kiNgg",
+        "link": "https://www.vlr.gg/player/8549/kingg",
+        "id": "000000000008549",
+        "role": "player"
+      },
+      {
+        "ign": "tex",
+        "link": "https://www.vlr.gg/player/1818/tex",
+        "id": "000000000001818",
+        "role": "player"
+      },
+      {
+        "ign": "Mazino",
+        "link": "https://www.vlr.gg/player/7603/mazino",
+        "id": "000000000007603",
+        "role": "player"
+      },
+      {
+        "ign": "aspas",
+        "link": "https://www.vlr.gg/player/8480/aspas",
+        "id": "000000000008480",
+        "role": "player"
+      },
+      {
+        "ign": "C0M",
+        "link": "https://www.vlr.gg/player/619/c0m",
+        "id": "000000000000619",
+        "role": "player"
+      }
+    ],
+    "staff_item": [
+      {
+        "ign": "nzr",
+        "link": "https://www.vlr.gg/player/725/nzr",
+        "id": "000000000000725",
+        "role": "Sub"
+      },
+      {
+        "ign": "Daykiry",
+        "link": "https://www.vlr.gg/player/19302/daykiry",
+        "id": "000000000019302",
+        "role": "manager"
+      },
+      {
+        "ign": "goked",
+        "link": "https://www.vlr.gg/player/3055/goked",
+        "id": "000000000003055",
+        "role": "head coach"
+      },
+      {
+        "ign": "Itopata",
+        "link": "https://www.vlr.gg/player/333/itopata",
+        "id": "000000000000333",
+        "role": "assistant coach"
+      }
+    ],
+    "players": [
+      "000000000008549",
+      "000000000001818",
+      "000000000007603",
+      "000000000008480",
+      "000000000000619"
+    ],
+    "staff": [
+      "000000000000725",
+      "000000000019302",
+      "000000000003055",
+      "000000000000333"
+    ]
+  }
+}

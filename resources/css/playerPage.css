@@ -82,7 +82,7 @@ body {
   background-color: #D9D9D9;
 }
 
-.player-list-container {
+.team-list-container {
   justify-content: space-between;
   margin: 0px 200px;
   display: flex;
@@ -151,12 +151,11 @@ body {
   transition: 0.5s;
   transition-delay: 0s;
   transition-property: max-height;
-  overflow: auto;
-  
+  overflow: hidden;
 }
 
 .player-container-content-wrapper.active {
-  max-height: 500px;
+  max-height: 1000px;
   transition-delay: 0.2s;
 }
 
@@ -167,83 +166,62 @@ body {
 }
 
 .team-info {
-  margin-left: 10px;
-  margin-right: 10px;
+  margin: 35px;
   text-align: center;
   height: 30px;
   width: 100%;
 }
 
-.team-stats {
-  list-style-type: none;
-  padding-top: 15px;
-  justify-content: space-evenly;
-  display: flex;
-}
-
-.team-stats li{
-  display: inline-block;
-  padding: 0px 20px;
-  margin-left: 50px;
-  margin-right: 50px;
-}
-
-.dropdown {
-  position: relative;
-  margin-bottom: 40px;
-  width: 100%;
-  background-color: black;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
-.dropdown-menu {
-  position: absolute;
-  background-color: black;
-  width: 100%;
-}
-
-.expand {
-  width: 100%;
-}
-
-.player-portrait {
-  width: 100px;
-}
 
 .player-table {
-  margin: 10px 0;
   border-collapse: collapse;
   justify-content: space-evenly;
   width: 100%;
-  border-width: 3px;
+  table-layout: fixed;
 }
 
-.player-table th, .player-table td {
-  text-align: center;
-  padding: 8px;
-  color: #284B63;
+.player-table tr:first-child td {
+  padding-top: var(--xy-padding);
+}
+
+.player-table tr:last-child td, .player-img {
+  padding-bottom: var(--xy-padding);
+  border-bottom: 2px solid var(--font-color);
+}
+
+.player-table tbody:last-child tr:last-child td, .player-table tbody:last-child .player-img {
+  border-bottom: none;
 }
 
 .player-img {
+  text-align: center;
+  padding-right: 10px;
+  width: 150px;
+}
+
+.player-img img {
   vertical-align: middle;
-  height: 75px;
-  width: 75px;
-  padding: 0px;
+  width: 125px;
+  border-radius: var(--border-radius);
 }
 
-.player-flag {
-  width: 30px;
-  height: 15px;
+.player-agent {
+  height: 25px;
+  border-radius: 5px;
 }
 
-em {
+.player-stats-label, .player-stats {
+  line-height: 0.7em;
+}
+
+em, .player-stats {
   color: grey;
 }
 
-tr {
-  border: 1px solid var(--font-color);
-  margin-bottom: 10px;
+.player-title {
+  float: left;
+  line-height: 1.25em;
+  width: 300px;
 }
 
 footer {
@@ -253,6 +231,4 @@ footer {
   background-color: white;
   box-shadow: 0 15px 30px 0 rgba(0,0,0,0.11),
   0 5px 15px 0 rgba(0,0,0,0.08);
-  
 }
-

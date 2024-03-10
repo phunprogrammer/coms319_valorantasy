@@ -1,1 +1,79 @@
-{"status":"Success","data":{"name":"Evil Geniuses","tag":"EG","logo":"https://owcdn.net/img/62a409ad29351.png","id":"5248","country":"United States","link":"https://vlr.gg/team/5248","socials":[{"name":"evilgeniuses.gg","link":"https://evilgeniuses.gg/"},{"name":"twitter.com","link":"https://twitter.com/EvilGeniuses"}],"earnings":"","players_item":[{"ign":"NaturE","link":"https://www.vlr.gg/player/4927/nature","id":"000000000004927","role":"player"},{"ign":"Derrek","link":"https://www.vlr.gg/player/1533/derrek","id":"000000000001533","role":"player"},{"ign":"supamen","link":"https://www.vlr.gg/player/826/supamen","id":"000000000000826","role":"player"},{"ign":"Apoth","link":"https://www.vlr.gg/player/5188/apoth","id":"000000000005188","role":"player"},{"ign":"jawgemo","link":"https://www.vlr.gg/player/3993/jawgemo","id":"000000000003993","role":"player"}],"staff_item":[{"ign":"potter","link":"https://www.vlr.gg/player/3104/potter","id":"000000000003104","role":"head coach"},{"ign":"pho","link":"https://www.vlr.gg/player/761/pho","id":"000000000000761","role":"assistant coach"}],"players":["000000000004927","000000000001533","000000000000826","000000000005188","000000000003993"],"staff":["000000000003104","000000000000761"]}}
+{
+  "status": "Success",
+  "data": {
+    "name": "Evil Geniuses",
+    "tag": "EG",
+    "logo": "https://owcdn.net/img/62a409ad29351.png",
+    "id": "5248",
+    "country": "United States",
+    "link": "https://vlr.gg/team/5248",
+    "socials": [
+      {
+        "name": "evilgeniuses.gg",
+        "link": "https://evilgeniuses.gg/"
+      },
+      {
+        "name": "twitter.com",
+        "link": "https://twitter.com/EvilGeniuses"
+      }
+    ],
+    "earnings": "",
+    "players_item": [
+      {
+        "ign": "NaturE",
+        "link": "https://www.vlr.gg/player/4927/nature",
+        "id": "000000000004927",
+        "role": "player"
+      },
+      {
+        "ign": "Derrek",
+        "link": "https://www.vlr.gg/player/1533/derrek",
+        "id": "000000000001533",
+        "role": "player"
+      },
+      {
+        "ign": "supamen",
+        "link": "https://www.vlr.gg/player/826/supamen",
+        "id": "000000000000826",
+        "role": "player"
+      },
+      {
+        "ign": "Apoth",
+        "link": "https://www.vlr.gg/player/5188/apoth",
+        "id": "000000000005188",
+        "role": "player"
+      },
+      {
+        "ign": "jawgemo",
+        "link": "https://www.vlr.gg/player/3993/jawgemo",
+        "id": "000000000003993",
+        "role": "player"
+      }
+    ],
+    "staff_item": [
+      {
+        "ign": "potter",
+        "link": "https://www.vlr.gg/player/3104/potter",
+        "id": "000000000003104",
+        "role": "head coach"
+      },
+      {
+        "ign": "pho",
+        "link": "https://www.vlr.gg/player/761/pho",
+        "id": "000000000000761",
+        "role": "assistant coach"
+      }
+    ],
+    "players": [
+      "000000000004927",
+      "000000000001533",
+      "000000000000826",
+      "000000000005188",
+      "000000000003993"
+    ],
+    "staff": [
+      "000000000003104",
+      "000000000000761"
+    ]
+  }
+}

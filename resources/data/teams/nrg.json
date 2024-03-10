@@ -1,1 +1,93 @@
-{"status":"Success","data":{"name":"NRG Esports","tag":"NRG","logo":"https://owcdn.net/img/62874d7ac0534.png","id":"1034","country":"United States","link":"https://vlr.gg/team/1034","socials":[{"name":"nrg.gg","link":"https://NRG.gg/"},{"name":"twitter.com","link":"https://twitter.com/NRGgg"}],"earnings":"","players_item":[{"ign":"Ethan","link":"https://www.vlr.gg/player/11225/ethan","id":"000000000011225","role":"player"},{"ign":"crashies","link":"https://www.vlr.gg/player/4/crashies","id":"000000000000004","role":"player"},{"ign":"Victor","link":"https://www.vlr.gg/player/261/victor","id":"000000000000261","role":"player"},{"ign":"Marved","link":"https://www.vlr.gg/player/263/marved","id":"000000000000263","role":"player"},{"ign":"Demon1","link":"https://www.vlr.gg/player/26171/demon1","id":"000000000026171","role":"player"}],"staff_item":[{"ign":"Chet","link":"https://www.vlr.gg/player/4012/chet","id":"000000000004012","role":"head coach"},{"ign":"Tanizhq","link":"https://www.vlr.gg/player/1142/tanizhq","id":"000000000001142","role":"assistant coach"},{"ign":"yeboislays","link":"https://www.vlr.gg/player/44432/yeboislays","id":"000000000044432","role":"analyst"},{"ign":"vladk0r","link":"https://www.vlr.gg/player/13652/vladk0r","id":"000000000013652","role":"analyst"}],"players":["000000000011225","000000000000004","000000000000261","000000000000263","000000000026171"],"staff":["000000000004012","000000000001142","000000000044432","000000000013652"]}}
+{
+  "status": "Success",
+  "data": {
+    "name": "NRG Esports",
+    "tag": "NRG",
+    "logo": "https://owcdn.net/img/62874d7ac0534.png",
+    "id": "1034",
+    "country": "United States",
+    "link": "https://vlr.gg/team/1034",
+    "socials": [
+      {
+        "name": "nrg.gg",
+        "link": "https://NRG.gg/"
+      },
+      {
+        "name": "twitter.com",
+        "link": "https://twitter.com/NRGgg"
+      }
+    ],
+    "earnings": "",
+    "players_item": [
+      {
+        "ign": "Ethan",
+        "link": "https://www.vlr.gg/player/11225/ethan",
+        "id": "000000000011225",
+        "role": "player"
+      },
+      {
+        "ign": "crashies",
+        "link": "https://www.vlr.gg/player/4/crashies",
+        "id": "000000000000004",
+        "role": "player"
+      },
+      {
+        "ign": "Victor",
+        "link": "https://www.vlr.gg/player/261/victor",
+        "id": "000000000000261",
+        "role": "player"
+      },
+      {
+        "ign": "Marved",
+        "link": "https://www.vlr.gg/player/263/marved",
+        "id": "000000000000263",
+        "role": "player"
+      },
+      {
+        "ign": "Demon1",
+        "link": "https://www.vlr.gg/player/26171/demon1",
+        "id": "000000000026171",
+        "role": "player"
+      }
+    ],
+    "staff_item": [
+      {
+        "ign": "Chet",
+        "link": "https://www.vlr.gg/player/4012/chet",
+        "id": "000000000004012",
+        "role": "head coach"
+      },
+      {
+        "ign": "Tanizhq",
+        "link": "https://www.vlr.gg/player/1142/tanizhq",
+        "id": "000000000001142",
+        "role": "assistant coach"
+      },
+      {
+        "ign": "yeboislays",
+        "link": "https://www.vlr.gg/player/44432/yeboislays",
+        "id": "000000000044432",
+        "role": "analyst"
+      },
+      {
+        "ign": "vladk0r",
+        "link": "https://www.vlr.gg/player/13652/vladk0r",
+        "id": "000000000013652",
+        "role": "analyst"
+      }
+    ],
+    "players": [
+      "000000000011225",
+      "000000000000004",
+      "000000000000261",
+      "000000000000263",
+      "000000000026171"
+    ],
+    "staff": [
+      "000000000004012",
+      "000000000001142",
+      "000000000044432",
+      "000000000013652"
+    ]
+  }
+}
