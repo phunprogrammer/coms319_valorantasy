@@ -19,7 +19,7 @@ async function loadPlayers() {
     for (const [key, value] of Object.entries(json.data.teams)) {
         console.log(`Key: ${key}, Value: ${value}`);
 
-        const teamReponse = await fetch(`./resources/data/teams/${key.normalize("NFD").replace(/[\u0300-\u036f]/g, "")}.json`);
+        const teamReponse = await fetch(`./resources/data/teams/${key.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()}.json`);
         const team = await teamReponse.json();
 
         var teamName = team.data.name;
