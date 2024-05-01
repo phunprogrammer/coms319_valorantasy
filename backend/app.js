@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const cookieParser = require('cookie-parser');
 
 dotenv.config();
 
@@ -12,6 +13,7 @@ app.listen(port, () => {
 });
 
 app.use(express.json());
+app.use(cookieParser());
 
 mongoose.connect(process.env.MDB_CONNECT)
 .then(() => {
@@ -21,5 +23,5 @@ mongoose.connect(process.env.MDB_CONNECT)
     console.error(err);
 });
 
-app.use('/users', require('./routes/userRoutes'));
+app.use('/teams', require('./routes/teamRoutes'));
 app.use('/auth', require('./routes/authRoutes'));
