@@ -1,16 +1,17 @@
 const jwt = require('jsonwebtoken');
+const User = require('../models/userModel');
 
-function auth(req, res, next) {
+const auth = async (req, res, next) => {
     try {
         const token = req.cookies.token;
-        const expiration = req.cookies.exp;
 
         if(!token) throw new Error;
 
         const verified = jwt.verify(token, process.env.JWT_SECRET);
 
-        if(Date.now() >= expiration) throw new Error;
+        if(!(await User.findOne( { _id: verified.user } ))) throw new Error;
 
+        req.user = verified.user;
         next();
     }
     catch(err) {

@@ -23,5 +23,6 @@ mongoose.connect(process.env.MDB_CONNECT)
     console.error(err);
 });
 
-app.use('/teams', require('./routes/teamRoutes'));
+app.use('/leagues', require('./routes/leagueRoutes'));
 app.use('/auth', require('./routes/authRoutes'));
+app.use('/users', require('./routes/userRoutes'));
