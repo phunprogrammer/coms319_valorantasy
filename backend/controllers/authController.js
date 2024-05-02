@@ -15,6 +15,9 @@ const register = async (req, res) => {
         if(password.length < 8)
             return res.status(400).json( {errorMessage: "Password too short"} );
 
+        if(username.length > User.MAX_LENGTH)
+            return res.status(400).json( {errorMessage: "Username too long"} );
+
         const existingUser = await User.findOne( { username } );
 
         if(existingUser)
