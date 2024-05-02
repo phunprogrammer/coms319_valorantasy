@@ -1,4 +1,5 @@
-const User = require('../models/userModel');
+const { User, MAX_LENGTH } = require('../models/userModel.js');
+
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const {
@@ -15,7 +16,7 @@ const register = async (req, res) => {
         if(password.length < 8)
             return res.status(400).json( {errorMessage: "Password too short"} );
 
-        if(username.length > User.MAX_LENGTH)
+        if(username.length > MAX_LENGTH)
             return res.status(400).json( {errorMessage: "Username too long"} );
 
         const existingUser = await User.findOne( { username } );

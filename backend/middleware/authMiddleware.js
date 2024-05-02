@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const User = require('../models/userModel');
+const { User } = require('../models/userModel');
 
 const auth = async (req, res, next) => {
     try {
@@ -9,6 +9,8 @@ const auth = async (req, res, next) => {
 
         const verified = jwt.verify(token, process.env.JWT_SECRET);
 
+        console.log(verified);
+        
         if(!(await User.findOne( { _id: verified.user } ))) throw new Error;
 
         req.user = verified.user;
