@@ -1,6 +1,6 @@
-const User = require('../models/userModel');
+const { User, MAX_LENGTH } = require('../models/userModel.js');
+
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
 const {
     signToken
 } = require('../services/authService');
@@ -15,6 +15,9 @@ const register = async (req, res) => {
         if(password.length < 8)
             return res.status(400).json( {errorMessage: "Password too short"} );
 
+        if(username.length > MAX_LENGTH)
+            return res.status(400).json( {errorMessage: "Username too long"} );
+
         const existingUser = await User.findOne( { username } );
 
         if(existingUser)
@@ -24,14 +27,14 @@ const register = async (req, res) => {
         const passwordHash = await bcrypt.hash(password, salt);
 
         const newUser = new User({
-            username, passwordHash
+            username, passwordHash, roles: ["user"]
         });
 
         const savedUser = await newUser.save();
 
         res.cookie('token', signToken(savedUser), {
             httpOnly: true
-        }).send();
+        }).json(savedUser).send();
     }
     catch(err) {
         console.error(err);
@@ -58,7 +61,7 @@ const login = async (req, res) => {
 
         res.cookie('token', signToken(existingUser), {
             httpOnly: true
-        }).send();
+        }).json(existingUser).send();
     }
     catch(err) {
         console.error(err);

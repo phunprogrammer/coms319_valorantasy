@@ -4,6 +4,6 @@ const {
 } = require('../controllers/teamController');
 const auth = require('../middleware/authMiddleware');
 
-router.post('', auth, saveTeam);
+router.post('', auth(["user", "admin"]), saveTeam);
 
 module.exports = router;
