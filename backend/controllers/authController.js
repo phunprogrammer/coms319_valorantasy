@@ -1,7 +1,6 @@
 const { User, MAX_LENGTH } = require('../models/userModel.js');
 
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
 const {
     signToken
 } = require('../services/authService');

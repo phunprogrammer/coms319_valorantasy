@@ -11,9 +11,32 @@ const userSchema = new mongoose.Schema({
   },
   passwordHash: { type: String, required: true },
   roles: [{ type: String, required: true, enum: ["user", "admin"]}],
-  teams: [{ type: mongoose.Schema.Types.ObjectId, ref: "team" }],
-  leagues: [{ type: mongoose.Schema.Types.ObjectId, ref: "league" }],
   createdAt: { type: Date, immutable: true, default: () => Date.now() },
+});
+
+userSchema.set('toJSON', {
+  transform: function(doc, ret) {
+    delete ret.passwordHash;
+    return ret;
+  }
+});
+
+userSchema.virtual("ownedLeagues", {
+  ref: 'league',
+  localField: '_id',
+  foreignField: 'owner'
+});
+
+userSchema.virtual("joinedLeagues", {
+  ref: 'userLeague',
+  localField: '_id',
+  foreignField: 'user'
+});
+
+userSchema.virtual("teams", {
+  ref: 'team',
+  localField: '_id',
+  foreignField: 'manager'
 });
 
 const User = mongoose.model("user", userSchema);
