@@ -4,13 +4,15 @@ const {
     getUserJoinedLeagues,
     postUserLeague,
     deleteUserLeague,
-    joinLeague
+    joinLeague,
+    renameLeague
 } = require('../controllers/userController.js');
 const auth = require('../middleware/authMiddleware');
 
 router.get('/leagues/owned', auth(["user", "admin"]), getUserOwnedLeagues);
 router.get('/leagues/joined', auth(["user", "admin"]), getUserJoinedLeagues);
 router.put('/leagues/:id', auth(["user", "admin"]), joinLeague);
+router.put('/leagues/:id/:name', auth(["user", "admin"]), renameLeague);
 router.delete('/leagues/:id', auth(["user", "admin"]), deleteUserLeague);
 router.post('/leagues/:name', auth(["user", "admin"]), postUserLeague);
 

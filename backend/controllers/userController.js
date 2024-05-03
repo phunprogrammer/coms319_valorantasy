@@ -90,10 +90,31 @@ const joinLeague = async (req, res) => {
     }
 };
 
+const renameLeague = async (req, res) => {
+    try{
+        const id = req.params.id;
+
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(400).json( {errorMessage: "Invalid Id"} );
+
+        const league = await League.findOne({ owner: req.user, _id: id });
+
+        if(!league) return res.status(404).json( {errorMessage: "League doesn't exist"} );
+
+        league.name = req.params.name;
+        const savedLeague = await league.save();
+
+        res.json(savedLeague);
+    } catch(err) {
+        console.error(err);
+        res.status(500).send();
+    }
+};
+
 module.exports = {
     getUserOwnedLeagues,
     getUserJoinedLeagues,
     postUserLeague,
     deleteUserLeague,
-    joinLeague
+    joinLeague,
+    renameLeague
 };
