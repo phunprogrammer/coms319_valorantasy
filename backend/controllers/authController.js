@@ -28,14 +28,14 @@ const register = async (req, res) => {
         const passwordHash = await bcrypt.hash(password, salt);
 
         const newUser = new User({
-            username, passwordHash
+            username, passwordHash, roles: ["user"]
         });
 
         const savedUser = await newUser.save();
 
         res.cookie('token', signToken(savedUser), {
             httpOnly: true
-        }).send();
+        }).json(savedUser).send();
     }
     catch(err) {
         console.error(err);
@@ -62,7 +62,7 @@ const login = async (req, res) => {
 
         res.cookie('token', signToken(existingUser), {
             httpOnly: true
-        }).send();
+        }).json(existingUser).send();
     }
     catch(err) {
         console.error(err);

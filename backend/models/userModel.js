@@ -10,6 +10,7 @@ const userSchema = new mongoose.Schema({
     maxLength: MAX_LENGTH,
   },
   passwordHash: { type: String, required: true },
+  roles: [{ type: String, required: true, enum: ["user", "admin"]}],
   teams: [{ type: mongoose.Schema.Types.ObjectId, ref: "team" }],
   leagues: [{ type: mongoose.Schema.Types.ObjectId, ref: "league" }],
   createdAt: { type: Date, immutable: true, default: () => Date.now() },

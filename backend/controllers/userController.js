@@ -22,6 +22,7 @@ const postUserLeague = async (req, res) => {
 
         const savedLeague = await newLeague.save();
         const user = await User.findById(savedLeague.owner);
+        
         user.leagues.push(savedLeague._id);
         await user.save();
 

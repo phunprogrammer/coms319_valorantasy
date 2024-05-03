@@ -1,13 +1,13 @@
 const router = require('express').Router();
 const { 
-    postLeague,
     getLeagues,
-    getLeague
+    getLeague,
+    deleteLeague
 } = require('../controllers/leagueController.js');
 const auth = require('../middleware/authMiddleware');
 
-router.post('/:name', auth, postLeague);
-router.get('', auth, getLeagues);
-router.get('/:id', auth, getLeague);
+router.get('', auth(["user", "admin"]), getLeagues);
+router.get('/:id', auth(["user", "admin"]), getLeague);
+router.delete('/:id', auth(["admin"]), deleteLeague);
 
 module.exports = router;
