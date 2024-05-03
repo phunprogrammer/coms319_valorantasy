@@ -55,11 +55,14 @@ const deleteUserLeague = async (req, res) => {
 
         const league = await League.findOneAndDelete({ owner: req.user, _id: id });
 
-        if(!league) return res.status(404).json( {errorMessage: "League doesn't exist"} );
+        const joinedLeague = await UserLeague.findOne({ user: req.user, league: id });
 
-        await UserLeague.deleteMany({ league: id });
+        if(!league && !joinedLeague) return res.status(404).json( {errorMessage: "League doesn't exist"} );
 
-        return res.json(league);
+        if(league) await UserLeague.deleteMany({ league: id });
+        else if(joinedLeague) await UserLeague.deleteOne({ user: req.user, league: id });
+
+        return res.json(league ? league : joinedLeague.league);
     } catch(err) {
         console.error(err);
         res.status(500).send();
@@ -110,11 +113,37 @@ const renameLeague = async (req, res) => {
     }
 };
 
+const deleteMember = async (req, res) => {
+    try{
+        const id = req.params.id;
+        const userId = req.params.userId;
+
+        if(!mongoose.Types.ObjectId.isValid(id) || !mongoose.Types.ObjectId.isValid(userId)) return res.status(400).json( {errorMessage: "Invalid Id"} );
+
+        const league = await League.findOne({ owner: req.user, _id: id });
+
+        if(!league) return res.status(404).json( {errorMessage: "League doesn't exist"} );
+
+        if(userId === req.user) return res.status(403).json( {errorMessage: "Cannot remove yourself"} );
+
+        var member;
+        if(!(member = await UserLeague.findOne({ user: userId, league }))) return res.status(403).json( {errorMessage: "User is not in your league"} );
+
+        await member.deleteOne();
+
+        res.json(member);
+    } catch(err) {
+        console.error(err);
+        res.status(500).send();
+    }
+};
+
 module.exports = {
     getUserOwnedLeagues,
     getUserJoinedLeagues,
     postUserLeague,
     deleteUserLeague,
     joinLeague,
-    renameLeague
+    renameLeague,
+    deleteMember
 };
