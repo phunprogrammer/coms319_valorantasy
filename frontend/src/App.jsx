@@ -8,17 +8,54 @@ import {
 } from "react-router-dom";
 
 function Main() {
-  const [myLeagues, setMyLeagues] = useState([]);
+  const [leagues, setLeagues] = useState([]);
 
   useEffect(() => {
     fetchLeagues();
   }, []);
 
   function fetchLeagues(userName) {
-    fetch(`httpL//localhost:3000/getUserLeagues/${userName}`)
+    fetch(`http://localhost:3000/getUserLeagues/${userName}`)
     .then(response => response.json())
-    .then(leagues => setMyLeagues(leagues))
+    .then(leagues => setLeagues(leagues))
     .catch(error => console.error("Error fetching user's leagues: ", error));
+  }
+
+  function fetchLeagues() {
+    fetch("http://localhost:3000/leagues")
+    .then(response => response.json())
+    .then(leagues => setLeagues(leagues))
+    .catch(error => console.error("Error fetching leagues: ", error));
+  }
+
+  function deleteLeague(id) {
+    fetch(`http://localhost:3000/leagues/${id}`, {method: 'DELETE'})
+    .then(response => fetchLeagues())
+    .catch(error => console.error("Error deleting league: ", error))
+  }
+
+  function updateLeague(league) {
+    fetch('http://localhost:3000/leagues' , {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(league),
+    }) 
+    .then(response => fetchLeagues())
+    .catch(error => console.error("Error updating league: ", error))
+  }
+
+  function addLeague(league) {
+    fetch(`http://localhost:8081/league`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(league),
+    })
+      .then(response => fetchLeagues())
+      .catch(error => console.error("Error adding item: ", error));
   }
 
   function ShowLeagues({ league, index }) {
@@ -108,41 +145,7 @@ function Main() {
 
 
 
-  function Home() {
-
-    return (
-      <div>
-
-      
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-          <div class="container-fluid">
-          <img class="mb-4" src="frontend\src\images\logo-large.png" alt="" width="72" height="57" />
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                  <Link to="/"><a class="nav-link active" aria-current="page" href="#">Home</a></Link>
-                </li>
-                <li class="nav-item">
-                  <Link to="/createLeague"><a class="nav-link active" aria-current="page" href="#">Create A Leauge</a></Link>
-                </li>
-                <li class="nav-item">
-                  <Link to="/leagues"><a class="nav-link active" aria-current="page" href="#">Join A Leauge</a></Link>
-                </li>
-                
-              </ul>
-            </div>
-          </div>
-        </nav>
-
-
-
-      </div>
-    )
-  }
-
+  
   function Create() {
     return(
       <div>
@@ -161,7 +164,7 @@ function Main() {
   }
 
 
-  function Leagues() {
+  function Home() {
 
 
 
@@ -182,10 +185,10 @@ function Main() {
                   <Link to="/"><a class="nav-link active" aria-current="page" href="#">Home</a></Link>
                 </li>
                 <li class="nav-item">
-                  <Link to="/createLeague"><a class="nav-link active" aria-current="page" href="#">Create A Leauge</a></Link>
+                  <Link to="/createLeague"><a class="nav-link active" aria-current="page" href="#">Create A League</a></Link>
                 </li>
                 <li class="nav-item">
-                  <Link to="/leagues"><a class="nav-link active" aria-current="page" href="#">Join A Leauge</a></Link>
+                  <Link to="/leagues"><a class="nav-link active" aria-current="page" href="#">Join A League</a></Link>
                 </li>
                 
               </ul>
@@ -195,15 +198,10 @@ function Main() {
 
         <div class="my-3 p-3 bg-body rounded shadow-sm">
     <h6 class="border-bottom pb-2 mb-0">User Leagues</h6>
-    {myLeagues.map((league, index) => (
+    {leagues.map((league, index) => (
       <ShowLeagues league={league} index={index} />
     ))}
   </div>
-
-
-
-
-      
 
       </div>
     )
