@@ -8,6 +8,103 @@ import {
 } from "react-router-dom";
 
 function Main() {
+  const [myLeagues, setMyLeagues] = useState([]);
+
+  useEffect(() => {
+    fetchLeagues();
+  }, []);
+
+  function fetchLeagues(userName) {
+    fetch(`httpL//localhost:3000/getUserLeagues/${userName}`)
+    .then(response => response.json())
+    .then(leagues => setMyLeagues(leagues))
+    .catch(error => console.error("Error fetching user's leagues: ", error));
+  }
+
+  function ShowLeagues({ league, index }) {
+    
+    const [isEditing, setIsEditing] = useState(false);
+    const [editedLeague, setEditedLeague] = useSTate({ ...league })
+
+    const handleDelete = (leagueId) => {
+      if(window.confirm("Do you really want to delete your league?"))
+        deleteLeague(leagueId)
+
+    }
+
+    const handleEdit = () => {
+      setIsEditing(true)
+      setEditedLeague({ ...league })
+    }
+
+    const handleSave = () => {
+      const updatedLeague = {
+        
+      }
+      updateLeague(updatedLeague)
+      setIsEditing(false)
+    }
+
+    const handleCancel = () => {
+      setIsEditing(false)
+      setEditedLeague({ ...league })
+    }
+
+    const handleChange = (e) => {
+      const { name, value } = e.target;
+      setEditedLeague(prevState => ({
+        ...prevState,
+        [name]: value
+      }))
+    }
+
+    return (
+      <div>
+        <div class="d-flex text-body-secondary pt-3">
+          <img href={league.imageUrl} width="32" height="32" />
+          <p class="pb-3 mb-0 small lh-sm border-bottom">
+          
+          {isEditing ? (<input type="text" name="imageUrl" value={editedLeague.imageUrl} onChange={handleChange} />) : (<></>)}
+          <div className="card-body">
+            {isEditing ? (
+              <>
+                <input type="text" name="name" value={editedLeague.name} onChange={handleChange} />
+                <input type="text" name="draftDate" value={editedLeague.draftDate} onChange={handleChange} />
+                <input type="text" name="category" value={editedLeague.category} onChange={handleChange} />
+              </>
+            ) : (
+              <p className="card-text">
+                <strong>{item.title}</strong> <br />
+                <ul>
+                  <strong class="d-block text-gray-dark">{league.name}</strong>
+                  <strong class="d-block text-gray-dark">{league.number}</strong>
+                  <strong class="d-block text-gray-dark">{league.draftDate}</strong>
+                </ul>
+              </p>
+            )}
+            <div className="d-flex justify-content-between align-items-center">
+              <div className="btn-group">
+                {isEditing ? (
+                  <>
+                    <button type="button" className="btn btn-sm btn-outline-secondary" onClick={handleSave}>Save</button>
+                    <button type="button" className="btn btn-sm btn-outline-secondary" onClick={handleCancel}>Cancel</button>
+                  </>
+                ) : (
+                  <button type="button" className="btn btn-sm btn-outline-secondary" onClick={handleEdit}>Modify</button>
+                )}
+                <button type="button" className="btn btn-sm btn-outline-secondary" onClick={() => handleDelete(league.id)}>Delete</button>
+              </div>
+            </div>
+          </div>
+
+      </p>
+
+    </div>
+
+      </div>
+    )
+
+  }
 
 
 
@@ -15,6 +112,8 @@ function Main() {
 
     return (
       <div>
+
+      
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
           <div class="container-fluid">
           <img class="mb-4" src="frontend\src\images\logo-large.png" alt="" width="72" height="57" />
@@ -37,6 +136,8 @@ function Main() {
             </div>
           </div>
         </nav>
+
+
 
       </div>
     )
@@ -62,9 +163,47 @@ function Main() {
 
   function Leagues() {
 
+
+
     return( 
       <div>
         
+
+      
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+          <div class="container-fluid">
+          <img class="mb-4" src="frontend\src\images\logo-large.png" alt="" width="72" height="57" />
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <Link to="/"><a class="nav-link active" aria-current="page" href="#">Home</a></Link>
+                </li>
+                <li class="nav-item">
+                  <Link to="/createLeague"><a class="nav-link active" aria-current="page" href="#">Create A Leauge</a></Link>
+                </li>
+                <li class="nav-item">
+                  <Link to="/leagues"><a class="nav-link active" aria-current="page" href="#">Join A Leauge</a></Link>
+                </li>
+                
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+        <div class="my-3 p-3 bg-body rounded shadow-sm">
+    <h6 class="border-bottom pb-2 mb-0">User Leagues</h6>
+    {myLeagues.map((league, index) => (
+      <ShowLeagues league={league} index={index} />
+    ))}
+  </div>
+
+
+
+
+      
 
       </div>
     )
