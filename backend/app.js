@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser');
+const { scrapeStats } = require('./services/scraperService');
 
 dotenv.config();
 
@@ -26,3 +27,5 @@ mongoose.connect(process.env.MDB_CONNECT)
 app.use('/leagues', require('./routes/leagueRoutes'));
 app.use('/auth', require('./routes/authRoutes'));
 app.use('/users', require('./routes/userRoutes'));
+
+scrapeStats(2004);
