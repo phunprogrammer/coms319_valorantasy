@@ -1,6 +1,5 @@
 const puppeteer = require('puppeteer');
-const fs = require("fs/promises");
-const { Player, STAT_IDENTIFIER } = require("../models/playerModel");
+const { Player } = require("../models/playerModel");
 
 const scrapeStats = async (id) => {
     try {
