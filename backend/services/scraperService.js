@@ -100,7 +100,7 @@ const scrapeTable = async (page, id) => {
         player.eventId = id;
         player.realName = playerData.realName;
         player.image = playerData.image;
-        player.points = calcPoints(player);
+        player.stats["PTS"] = calcPoints(player).toFixed(2);
     }
 
     return players;
@@ -118,7 +118,45 @@ const calcPoints = (player) => {
     return ((ADR / 10.0) + K - D + A + FK - FD) * (R / 2.0);
 };
 
+const generateStats = async (week) => {
+    await Player.deleteMany({});
+
+    var players = await scrapeAllStats(2004, 5);
+
+    for(const { stats, ...player } of players) {
+        const newPlayer = new Player(player);
+        newPlayer.stats["total"] = stats;
+        await newPlayer.save();
+    }
+
+    for (let i = 1; i <= week; i++) {
+        players = await scrapeWeekStats(2004, i);
+        
+        for(const { stats, ...player } of players) {
+            const existingPlayer = await Player.findOne({ id: player.id });
+            await Player.updateOne(
+                { _id: existingPlayer._id },
+                { $set: { ["stats.week" + i]: stats } }
+            );
+        }
+    }
+
+    for(var player of await Player.find({})) {
+        let totalPTS = 0;
+
+        for (const key in player.stats)
+            if (key !== "total" && typeof player.stats[key] === 'object')
+                totalPTS += parseFloat(player.stats[key].PTS) || 0;
+
+        await Player.updateOne(
+            { _id: player._id },
+            { $set: { "stats.total.PTS": totalPTS.toString() } }
+        );
+    }
+};
+
 module.exports = {
     scrapeAllStats,
-    scrapeWeekStats
+    scrapeWeekStats,
+    generateStats
 };
