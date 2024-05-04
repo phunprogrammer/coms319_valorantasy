@@ -12,6 +12,10 @@ const teamSchema = new mongoose.Schema({
     ref: "league",
     required: true,
   },
+  players: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "player"
+  }],
   createdAt: { type: Date, immutable: true, default: () => Date.now() },
 });
 

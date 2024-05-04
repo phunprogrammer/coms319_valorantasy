@@ -40,6 +40,9 @@ const postUserLeague = async (req, res) => {
         });
         await connection.save();
 
+        const populatedLeague = await League.findById(savedLeague._id);
+        console.log(populatedLeague.players);
+
         return res.json(savedLeague);
     } catch(err) {
         console.error(err);
