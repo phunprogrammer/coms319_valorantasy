@@ -22,10 +22,13 @@ function Main() {
   }
 
   function fetchLeagues() {
-    fetch("http://localhost:3000/leagues")
-    .then(response => response.json())
-    .then(leagues => setLeagues(leagues))
-    .catch(error => console.error("Error fetching leagues: ", error));
+    fetch('http://localhost:3000/leagues', { mode: 'no-cors' })
+  .then(response => {
+    console.log('Request successful');
+  })
+  .catch(error => {
+    console.error('Request failed:', error);
+  });
   }
 
   function deleteLeague(id) {
@@ -175,20 +178,20 @@ function Main() {
       
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
           <div className="container-fluid">
-          <img className="mb-4" src="frontend\src\images\logo-large.png" alt="" width="72" height="57" />
+          <img className="mb-4" src=".\images\logo-large.png" alt="" width="72" height="57" />
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <Link to="/"><a className="nav-link active" aria-current="page" href="#">Home</a></Link>
+                  <Link to="/">Home</Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/createLeague"><a className="nav-link active" aria-current="page" href="#">Create A League</a></Link>
+                  <Link to="/createLeague">Create A League</Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/leagues"><a className="nav-link active" aria-current="page" href="#">Join A League</a></Link>
+                  <Link to="/leagues">Join A League</Link>
                 </li>
                 
               </ul>
@@ -211,7 +214,8 @@ function Main() {
 
   function Register() {
 
-    const handleRegister = async () => {
+    const handleRegister = async (event) => {
+      event.preventDefault();
       const usernameInput = document.getElementById('floatingInput');
       const passwordInput = document.getElementById('floatingPassword');
     
@@ -232,10 +236,10 @@ function Main() {
           throw new Error(errorMessage);
         }
     
-        console.log("Login successful!");
+        console.log("Sign up successful!");
         
       } catch (error) {
-        console.error('Login failed:', error.message);
+        console.error('Sign up failed:', error.message);
       }
     }
 
@@ -245,7 +249,7 @@ function Main() {
         <link href="sign-in.css" rel="stylesheet" />
         <main className="form-signin w-100 m-auto">
           <form>
-            <img className="mb-4" src="frontend\src\images\logo-large.png" alt="" width="72" height="57" />
+            <img className="mb-4" src="..\images\logo-large.png" alt="" width="72" height="57" />
             <h1 className="h3 mb-3 fw-normal">Sign up</h1>
 
             <div className="form-floating">
@@ -257,7 +261,7 @@ function Main() {
               <label htmlFor="floatingPassword">Password</label>
             </div>
 
-            <Link to="/home"><button className="btn btn-primary w-100 py-2" type="submit" onClick={handleRegister}>Sign up</button></Link>
+            <Link to="/"><button className="btn btn-primary w-100 py-2" type="submit" onClick={(e) => handleRegister(e)}>Sign up</button></Link>
             <p className="mt-5 mb-3 text-body-secondary"> Already have an account?</p>
             <Link to="/login"><button className="btn btn-primary w-100 py-2" type="submit" >Log in</button></Link>
             
@@ -317,7 +321,7 @@ function Main() {
               <label htmlFor="floatingPassword">Password</label>
             </div>
 
-            <Link to="/home"><button className="btn btn-primary w-100 py-2" type="submit" onClick={handleLogin}>Sign in</button></Link>
+            <Link to="/"><button className="btn btn-primary w-100 py-2" type="submit" onClick={handleLogin}>Sign in</button></Link>
             <p className="mt-5 mb-3 text-body-secondary"> Don't have an account?</p>
             <Link to="/register"><button className="btn btn-primary w-100 py-2" type="submit" >Sign up</button></Link>
             
