@@ -5,11 +5,11 @@ import {
   Route, 
   Routes, 
   Link,
+  useNavigate,
 } from "react-router-dom";
 
 function Main() {
   const [leagues, setLeagues] = useState([]);
-
   useEffect(() => {
     fetchLeagues();
   }, []);
@@ -213,6 +213,8 @@ function Main() {
 
 
   function Register() {
+    const nav = useNavigate();
+
 
     const handleRegister = async (event) => {
       event.preventDefault();
@@ -238,9 +240,12 @@ function Main() {
     
         console.log("Sign up successful!");
         
+        nav('/')
+        
       } catch (error) {
         console.error('Sign up failed:', error.message);
       }
+    
     }
 
 
@@ -253,7 +258,7 @@ function Main() {
             <h1 className="h3 mb-3 fw-normal">Sign up</h1>
 
             <div className="form-floating">
-              <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" />
+              <input type="username" className="form-control" id="floatingInput" placeholder="username" />
               <label htmlFor="floatingInput">Username</label>
             </div>
             <div className="form-floating">
@@ -261,7 +266,7 @@ function Main() {
               <label htmlFor="floatingPassword">Password</label>
             </div>
 
-            <Link to="/"><button className="btn btn-primary w-100 py-2" type="submit" onClick={(e) => handleRegister(e)}>Sign up</button></Link>
+            <button className="btn btn-primary w-100 py-2" type="submit" onClick={(e) => handleRegister(e)}>Sign up</button>
             <p className="mt-5 mb-3 text-body-secondary"> Already have an account?</p>
             <Link to="/login"><button className="btn btn-primary w-100 py-2" type="submit" >Log in</button></Link>
             
@@ -274,8 +279,11 @@ function Main() {
   }
 
   function Login() {
+    const nav = useNavigate();
 
-    const handleLogin = async () => {
+
+    const handleLogin = async (event) => {
+      event.preventDefault();
       const usernameInput = document.getElementById('floatingInput');
       const passwordInput = document.getElementById('floatingPassword');
     
@@ -297,6 +305,7 @@ function Main() {
         }
     
         console.log("Login successful!");
+        nav('/')
       } catch (error) {
         console.error('Login failed:', error.message);
       }
@@ -313,7 +322,7 @@ function Main() {
             <h1 className="h3 mb-3 fw-normal">Sign in</h1>
 
             <div className="form-floating">
-              <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" />
+              <input type="username" className="form-control" id="floatingInput" placeholder="username" />
               <label htmlFor="floatingInput">Username</label>
             </div>
             <div className="form-floating">
@@ -321,7 +330,7 @@ function Main() {
               <label htmlFor="floatingPassword">Password</label>
             </div>
 
-            <Link to="/"><button className="btn btn-primary w-100 py-2" type="submit" onClick={handleLogin}>Sign in</button></Link>
+            <button className="btn btn-primary w-100 py-2" type="submit" onClick={(e) => handleLogin(e)}>Sign in</button>
             <p className="mt-5 mb-3 text-body-secondary"> Don't have an account?</p>
             <Link to="/register"><button className="btn btn-primary w-100 py-2" type="submit" >Sign up</button></Link>
             
