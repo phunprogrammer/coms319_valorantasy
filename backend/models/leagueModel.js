@@ -6,12 +6,6 @@ const leagueSchema = new mongoose.Schema({
   createdAt: { type: Date, immutable: true, default: () => Date.now() },
 });
 
-leagueSchema.virtual("teams", {
-  ref: 'team',
-  localField: '_id',
-  foreignField: 'league'
-});
-
 leagueSchema.virtual("members", {
   ref: 'userLeague',
   localField: '_id',

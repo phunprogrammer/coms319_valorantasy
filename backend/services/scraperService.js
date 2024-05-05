@@ -129,10 +129,10 @@ const calcPoints = (player) => {
     return (K - D) * 0.75 + A * 0.5 + FK - FD + (CL * 3);
 };
 
-const generateStats = async (week) => {
+const generateAllPlayers = async (week) => {
     await Player.deleteMany({});
 
-    var players = await scrapeAllStats(2004, 5);
+    var players = await scrapeAllStats(2004);
 
     for(const { stats, ...player } of players) {
         const newPlayer = new Player(player);
@@ -153,8 +153,45 @@ const generateStats = async (week) => {
     }
 };
 
+const generateWeek = async(week) => {
+    const existingPlayers = await Player.find();
+    const players = await scrapeAllStats(2004);
+
+    for (const { stats, ...player } of players) {
+        let existingPlayer = existingPlayers.find(p => p.id === player.id);
+
+        if (existingPlayer) {
+            await Player.updateOne(
+                { _id: existingPlayer._id },
+                { ...player, $set: { ["stats.total"]: stats } }
+            );
+        } else {
+            const newPlayer = new Player({ ...player, stats: { total: stats } });
+            await newPlayer.save();
+        }
+    }
+
+    const weekly = await scrapeWeekStats(2004, week);
+
+    for (const { stats, ...player } of weekly) {
+        let existingPlayer = existingPlayers.find(p => p.id === player.id);
+
+        if (existingPlayer) {
+            await Player.updateOne(
+                { _id: existingPlayer._id },
+                { $set: { ["stats.week" + week]: stats } }
+            );
+        } else {
+            const newStats = { ["week" + week]: stats };
+            const newPlayer = new Player({ ...player, stats: newStats });
+            await newPlayer.save();
+        }
+    }
+};
+
 module.exports = {
     scrapeAllStats,
     scrapeWeekStats,
-    generateStats
+    generateAllPlayers,
+    generateWeek,
 };
