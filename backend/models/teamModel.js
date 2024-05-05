@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 
 const teamSchema = new mongoose.Schema({
-  name: { type: String, required: true },
   manager: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "user",
@@ -12,12 +11,16 @@ const teamSchema = new mongoose.Schema({
     ref: "league",
     required: true,
   },
-  players: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "player"
-  }],
   createdAt: { type: Date, immutable: true, default: () => Date.now() },
 });
+
+teamSchema.virtual("players", {
+  ref: 'playerTeam',
+  localField: '_id',
+  foreignField: 'team'
+});
+
+teamSchema.set('toJSON', { virtuals: true });
 
 const Team = mongoose.model("team", teamSchema);
 

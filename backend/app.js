@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser');
 const { scrapeAllStats, scrapeWeekStats, generateStats } = require('./services/scraperService');
-const { Player } = require('./models/playerModel.js');
+const { Player, AGENT_ROLES } = require('./models/playerModel');
 
 dotenv.config();
 
@@ -30,3 +30,16 @@ app.use('/auth', require('./routes/authRoutes'));
 app.use('/users', require('./routes/userRoutes'));
 
 //generateStats(4);
+//scrapeAllStats(2004);
+(async () => {
+    try {
+        for(const player of await Player.find())
+            console.log(player.name + ": " + getRoleString(player.getRole()));
+    } catch (err) {
+        console.error(err);
+    }
+})();
+
+function getRoleString(role) {
+    return Object.keys(AGENT_ROLES).find(key => AGENT_ROLES[key] === role) || 'UNKNOWN';
+}

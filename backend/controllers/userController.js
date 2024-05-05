@@ -1,6 +1,7 @@
 const { User } = require('../models/userModel');
 const League = require('../models/leagueModel');
-const UserLeague = require('../models/userLeagueModel.js');
+const Team = require('../models/teamModel');
+const UserLeague = require('../models/userLeagueModel');
 const mongoose = require("mongoose");
 
 const getUserOwnedLeagues = async (req, res) => {
@@ -32,16 +33,17 @@ const postUserLeague = async (req, res) => {
         const newLeague = new League({
             name, owner: req.user
         });
-
         const savedLeague = await newLeague.save();
+       
+        const newTeam = new Team({
+            manager: req.user, league: savedLeague
+        });
+        const savedTeam = await newTeam.save();
         
         const connection = new UserLeague({
-            user: req.user, league: savedLeague
+            user: req.user, league: savedLeague, team: savedTeam
         });
         await connection.save();
-
-        const populatedLeague = await League.findById(savedLeague._id);
-        console.log(populatedLeague.players);
 
         return res.json(savedLeague);
     } catch(err) {
@@ -84,8 +86,13 @@ const joinLeague = async (req, res) => {
 
         if(await UserLeague.findOne({ user: req.user, league })) return res.status(403).json( {errorMessage: "Cannot join league you're in"} );
 
+        const newTeam = new Team({
+            manager: req.user, league: league
+        });
+        const savedTeam = await newTeam.save();
+        
         const connection = new UserLeague({
-            user: req.user, league
+            user: req.user, league: savedLeague, team: savedTeam
         });
         await connection.save();
 
@@ -141,6 +148,17 @@ const deleteMember = async (req, res) => {
     }
 };
 
+const getTeams = async (req, res) => {
+    try{
+        const user = await User.findById(req.user).populate('teams');
+
+        return res.json(user.teams);
+    } catch(err) {
+        console.error(err);
+        res.status(500).send();
+    }
+};
+
 module.exports = {
     getUserOwnedLeagues,
     getUserJoinedLeagues,
@@ -148,5 +166,6 @@ module.exports = {
     deleteUserLeague,
     joinLeague,
     renameLeague,
-    deleteMember
+    deleteMember,
+    getTeams
 };

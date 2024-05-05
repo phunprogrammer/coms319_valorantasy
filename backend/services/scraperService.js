@@ -65,7 +65,6 @@ const scrapeTable = async (page, id) => {
             player.id = row.querySelector("a").getAttribute("href").split("/")[2];
             player.name = row.querySelector("div.text-of").textContent.trim();
             player.team = row.querySelector("div.stats-player-country").textContent.trim();
-            player.agents = Array.from(row.querySelectorAll("td.mod-agents div img")).map(img => img.getAttribute("src").split("/").slice(-1)[0].split(".")[0]);
 
             player.stats = {};
 
@@ -100,6 +99,19 @@ const scrapeTable = async (page, id) => {
         player.eventId = id;
         player.realName = playerData.realName;
         player.image = playerData.image;
+
+        player.agents = await page.$$eval("tbody tr", rows => {
+            var agents = {};
+
+            rows.forEach(row => {
+                const agentName = row.querySelector("td img").getAttribute("src").split("/").slice(-1)[0].split(".")[0];
+                const agentNum = row.querySelector("td:nth-child(2) > span").textContent.match(/\((\d+)\)/)?.[1];
+                agents[agentName] = agentNum;
+            });
+
+            return agents;
+        });
+        
         player.stats["PTS"] = calcPoints(player).toFixed(2);
     }
 
@@ -107,15 +119,14 @@ const scrapeTable = async (page, id) => {
 };
 
 const calcPoints = (player) => {
-    const ADR = parseFloat(player.stats["ADR"]);
-    const K = parseFloat(player.stats["K"]);
-    const D = parseFloat(player.stats["D"]);
-    const A = parseFloat(player.stats["A"]);
-    const FK = parseFloat(player.stats["FK"]);
-    const FD = parseFloat(player.stats["FD"]);
-    const R = parseFloat(player.stats["R"]);
+    const K = parseFloat(player.stats["K"]) || 0;
+    const D = parseFloat(player.stats["D"]) || 0;
+    const A = parseFloat(player.stats["A"]) || 0;
+    const FK = parseFloat(player.stats["FK"]) || 0;
+    const FD = parseFloat(player.stats["FD"]) || 0;
+    const CL = player.stats["CL"] ? parseFloat(player.stats["CL"].split("/")[0]) : 0;
 
-    return ((ADR / 10.0) + K - D + A + FK - FD) * (R / 2.0);
+    return (K - D) * 0.75 + A * 0.5 + FK - FD + (CL * 3);
 };
 
 const generateStats = async (week) => {
@@ -139,19 +150,6 @@ const generateStats = async (week) => {
                 { $set: { ["stats.week" + i]: stats } }
             );
         }
-    }
-
-    for(var player of await Player.find({})) {
-        let totalPTS = 0;
-
-        for (const key in player.stats)
-            if (key !== "total" && typeof player.stats[key] === 'object')
-                totalPTS += parseFloat(player.stats[key].PTS) || 0;
-
-        await Player.updateOne(
-            { _id: player._id },
-            { $set: { "stats.total.PTS": totalPTS.toString() } }
-        );
     }
 };
 

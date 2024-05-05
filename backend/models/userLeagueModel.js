@@ -9,6 +9,6 @@ const userLeagueSchema = new mongoose.Schema({
 
 userLeagueSchema.plugin(require('mongoose-autopopulate'));
 
-const League = mongoose.model("userLeague", userLeagueSchema);
+const UserLeague = mongoose.model("userLeague", userLeagueSchema);
 
-module.exports = League;
+module.exports = UserLeague;
