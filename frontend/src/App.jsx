@@ -97,9 +97,9 @@ function Main() {
 
     return (
       <div>
-        <div class="d-flex text-body-secondary pt-3">
+        <div className="d-flex text-body-secondary pt-3">
           <img href={league.imageUrl} width="32" height="32" />
-          <p class="pb-3 mb-0 small lh-sm border-bottom">
+          <p className="pb-3 mb-0 small lh-sm border-bottom">
           
           {isEditing ? (<input type="text" name="imageUrl" value={editedLeague.imageUrl} onChange={handleChange} />) : (<></>)}
           <div className="card-body">
@@ -113,9 +113,9 @@ function Main() {
               <p className="card-text">
                 <strong>{item.title}</strong> <br />
                 <ul>
-                  <strong class="d-block text-gray-dark">{league.name}</strong>
-                  <strong class="d-block text-gray-dark">{league.number}</strong>
-                  <strong class="d-block text-gray-dark">{league.draftDate}</strong>
+                  <strong className="d-block text-gray-dark">{league.name}</strong>
+                  <strong className="d-block text-gray-dark">{league.number}</strong>
+                  <strong className="d-block text-gray-dark">{league.draftDate}</strong>
                 </ul>
               </p>
             )}
@@ -173,22 +173,22 @@ function Main() {
         
 
       
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-          <div class="container-fluid">
-          <img class="mb-4" src="frontend\src\images\logo-large.png" alt="" width="72" height="57" />
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
+        <nav className="navbar navbar-expand-lg bg-body-tertiary">
+          <div className="container-fluid">
+          <img className="mb-4" src="frontend\src\images\logo-large.png" alt="" width="72" height="57" />
+            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                  <Link to="/"><a class="nav-link active" aria-current="page" href="#">Home</a></Link>
+            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                <li className="nav-item">
+                  <Link to="/"><a className="nav-link active" aria-current="page" href="#">Home</a></Link>
                 </li>
-                <li class="nav-item">
-                  <Link to="/createLeague"><a class="nav-link active" aria-current="page" href="#">Create A League</a></Link>
+                <li className="nav-item">
+                  <Link to="/createLeague"><a className="nav-link active" aria-current="page" href="#">Create A League</a></Link>
                 </li>
-                <li class="nav-item">
-                  <Link to="/leagues"><a class="nav-link active" aria-current="page" href="#">Join A League</a></Link>
+                <li className="nav-item">
+                  <Link to="/leagues"><a className="nav-link active" aria-current="page" href="#">Join A League</a></Link>
                 </li>
                 
               </ul>
@@ -196,8 +196,8 @@ function Main() {
           </div>
         </nav>
 
-        <div class="my-3 p-3 bg-body rounded shadow-sm">
-    <h6 class="border-bottom pb-2 mb-0">User Leagues</h6>
+        <div className="my-3 p-3 bg-body rounded shadow-sm">
+    <h6 className="border-bottom pb-2 mb-0">User Leagues</h6>
     {leagues.map((league, index) => (
       <ShowLeagues league={league} index={index} />
     ))}
@@ -243,23 +243,23 @@ function Main() {
     return(
       <div>
         <link href="sign-in.css" rel="stylesheet" />
-        <main class="form-signin w-100 m-auto">
+        <main className="form-signin w-100 m-auto">
           <form>
-            <img class="mb-4" src="frontend\src\images\logo-large.png" alt="" width="72" height="57" />
-            <h1 class="h3 mb-3 fw-normal">Sign up</h1>
+            <img className="mb-4" src="frontend\src\images\logo-large.png" alt="" width="72" height="57" />
+            <h1 className="h3 mb-3 fw-normal">Sign up</h1>
 
-            <div class="form-floating">
-              <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" />
-              <label for="floatingInput">Username</label>
+            <div className="form-floating">
+              <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" />
+              <label htmlFor="floatingInput">Username</label>
             </div>
-            <div class="form-floating">
-              <input type="password" class="form-control" id="floatingPassword" placeholder="Password" />
-              <label for="floatingPassword">Password</label>
+            <div className="form-floating">
+              <input type="password" className="form-control" id="floatingPassword" placeholder="Password" />
+              <label htmlFor="floatingPassword">Password</label>
             </div>
 
-            <Link to="/home"><button class="btn btn-primary w-100 py-2" type="submit" onClick={handleRegister}>Sign up</button></Link>
-            <p class="mt-5 mb-3 text-body-secondary">&copy; Akready have an account?</p>
-            <Link to="/login"><button class="btn btn-primary w-100 py-2" type="submit" >Log in</button></Link>
+            <Link to="/home"><button className="btn btn-primary w-100 py-2" type="submit" onClick={handleRegister}>Sign up</button></Link>
+            <p className="mt-5 mb-3 text-body-secondary"> Already have an account?</p>
+            <Link to="/login"><button className="btn btn-primary w-100 py-2" type="submit" >Log in</button></Link>
             
           </form>
         </main>
@@ -303,23 +303,23 @@ function Main() {
     return (
       <div>
         <link href="sign-in.css" rel="stylesheet" />
-        <main class="form-signin w-100 m-auto">
+        <main className="form-signin w-100 m-auto">
           <form>
-            <img class="mb-4" src="frontend\src\images\logo-large.png" alt="" width="72" height="57" />
-            <h1 class="h3 mb-3 fw-normal">Sign in</h1>
+            <img className="mb-4" src="frontend\src\images\logo-large.png" alt="" width="72" height="57" />
+            <h1 className="h3 mb-3 fw-normal">Sign in</h1>
 
-            <div class="form-floating">
-              <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" />
-              <label for="floatingInput">Username</label>
+            <div className="form-floating">
+              <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" />
+              <label htmlFor="floatingInput">Username</label>
             </div>
-            <div class="form-floating">
-              <input type="password" class="form-control" id="floatingPassword" placeholder="Password" />
-              <label for="floatingPassword">Password</label>
+            <div className="form-floating">
+              <input type="password" className="form-control" id="floatingPassword" placeholder="Password" />
+              <label htmlFor="floatingPassword">Password</label>
             </div>
 
-            <Link to="/home"><button class="btn btn-primary w-100 py-2" type="submit" onClick={handleLogin}>Sign in</button></Link>
-            <p class="mt-5 mb-3 text-body-secondary">&copy; Don't have an account?</p>
-            <Link to="/register"><button class="btn btn-primary w-100 py-2" type="submit" >Sign up</button></Link>
+            <Link to="/home"><button className="btn btn-primary w-100 py-2" type="submit" onClick={handleLogin}>Sign in</button></Link>
+            <p className="mt-5 mb-3 text-body-secondary"> Don't have an account?</p>
+            <Link to="/register"><button className="btn btn-primary w-100 py-2" type="submit" >Sign up</button></Link>
             
           </form>
         </main>
@@ -341,7 +341,6 @@ function Main() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/" element={<Home /> } />
-        <Route path="/leagues" element={<Leagues />} />
         <Route path="/draft" element={<Draft />} /> 
         <Route path="/createLeague" element={<Create />} />
       </Routes>
