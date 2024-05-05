@@ -1,20 +1,64 @@
 const League = require('../models/leagueModel');
-const User = require('../models/userModel');
+const UserLeague = require('../models/userLeagueModel');
+const mongoose = require("mongoose");
 
-const postLeague = async (req, res) => {
+const getLeagues = async (req, res) => {
     try{
-        const name = req.params.name;
-        
-        const newLeague = new League({
-            name, owner: req.user
-        });
+        const allLeagues = await League.find({});
+        res.json(allLeagues);
+    } catch(err) {
+        console.error(err);
+        res.status(500).send();
+    }
+};
 
-        const savedLeague = await newLeague.save();
-        const user = await User.findById(savedLeague.owner);
-        user.leagues.push(savedLeague._id);
-        await user.save();
+const getLeague = async (req, res) => {
+    try{
+        const id = req.params.id;
 
-        res.json(savedLeague);
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(400).json( {errorMessage: "Invalid Id"} );
+
+        const league = await League.findById(id);
+
+        if(!league) return res.status(404).json( {errorMessage: "League doesn't exist"} );
+
+        res.json(league);
+    } catch(err) {
+        console.error(err);
+        res.status(500).send();
+    }
+};
+
+const getLeagueMembers = async (req, res) => {
+    try{
+        const id = req.params.id;
+
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(400).json( {errorMessage: "Invalid Id"} );
+
+        const league = await League.findById(id).populate("members");
+
+        if(!league) return res.status(404).json( {errorMessage: "League doesn't exist"} );
+
+        res.json(league.members);
+    } catch(err) {
+        console.error(err);
+        res.status(500).send();
+    }
+};
+
+const deleteLeague = async (req, res) => {
+    try{
+        const id = req.params.id;
+
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(400).json( {errorMessage: "Invalid Id"} );
+
+        const league = await League.findByIdAndDelete(id);
+
+        if(!league) return res.status(404).json( {errorMessage: "League doesn't exist"} );
+
+        await UserLeague.deleteMany({ league: id });
+
+        res.json(league);
     } catch(err) {
         console.error(err);
         res.status(500).send();
@@ -22,5 +66,8 @@ const postLeague = async (req, res) => {
 };
 
 module.exports = {
-    postLeague
+    getLeagues,
+    getLeague,
+    deleteLeague,
+    getLeagueMembers
 };
