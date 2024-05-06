@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import "bootstrap/dist/css/bootstrap.css";
+
 import {
   BrowserRouter as Router,
   Route, 
@@ -10,6 +11,7 @@ import {
 
 function Main() {
   const [leagues, setLeagues] = useState([]);
+
   useEffect(() => {
     fetchLeagues();
   }, []);
@@ -22,26 +24,47 @@ function Main() {
   }
 
   function fetchLeagues() {
-    fetch('http://localhost:3000/leagues', { mode: 'no-cors' })
-  .then(response => {
-    console.log('Request successful');
-  })
-  .catch(error => {
-    console.error('Request failed:', error);
-  });
+    fetch('http://localhost:3000/leagues', {
+      credentials: 'include'
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json(); // Parse JSON data
+      })
+      .then(data => {
+        setLeagues(data);
+      })
+      .catch(error => {
+        console.error('Request failed:', error);
+      });
   }
 
+ 
+
   function deleteLeague(id) {
-    fetch(`http://localhost:3000/leagues/${id}`, {method: 'DELETE'})
+    console.log(id)
+    fetch(`http://localhost:3000/users/leagues/${id}`, {
+      method: 'DELETE',
+      credentials: 'include'
+
+    })
     .then(response => fetchLeagues())
     .catch(error => console.error("Error deleting league: ", error))
   }
 
-  function updateLeague(league) {
-    fetch('http://localhost:3000/leagues' , {
+
+
+
+
+  function renameLeague(league, id) {
+    fetch(`http://localhost:3000/users/leagues/${id}/${league.name}` , {
       method: 'PUT',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
+
       },
       body: JSON.stringify(league),
     }) 
@@ -49,22 +72,87 @@ function Main() {
     .catch(error => console.error("Error updating league: ", error))
   }
 
+
+
+
+
   function addLeague(league) {
-    fetch(`http://localhost:8081/league`, {
+    fetch(`http://localhost:3000/users/leagues/${league.name}`, {
       method: 'POST',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
+
       },
       body: JSON.stringify(league),
     })
       .then(response => fetchLeagues())
       .catch(error => console.error("Error adding item: ", error));
+
+
   }
 
-  function ShowLeagues({ league, index }) {
+
+  function join(id) {
+    fetch(`http://localhost:3000/users/leagues/${id}`, {
+      method: 'PUT',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+
+    })
+    .then(response => fetchLeagues())
+    .catch(error => console.error("Error joining league: ", error));
+  }
+
+  function leave(id) {
+    fetch(`http://localhost:3000/users/leagues/${id}`, {
+      method: 'DELETE',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+
+    })
+    .then(response => fetchLeagues())
+    .catch(error => console.error("Error joining league: ", error));
+  }
+
+
+
+
+
+
+  const logout = async() => {
+    await fetch(`http://localhost:3000/auth/logout`, {
+      method: 'GET',
+      credentials: 'include'
+    })
+    .then(response => response.json())
+    .catch(error => console.error("Error fetching user's leagues: ", error));
+    
+    window.location.reload();
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  function ShowLeague({ league }) {
     
     const [isEditing, setIsEditing] = useState(false);
-    const [editedLeague, setEditedLeague] = useSTate({ ...league })
+    const [editedLeague, setEditedLeague] = useState({ ...league })
 
     const handleDelete = (leagueId) => {
       if(window.confirm("Do you really want to delete your league?"))
@@ -77,11 +165,15 @@ function Main() {
       setEditedLeague({ ...league })
     }
 
-    const handleSave = () => {
+    const handleSave = (league) => {
       const updatedLeague = {
-        
+        _id: league._id,
+        name: editedLeague.name,
+        owner: league.owner,
+        createdAt: league.createdAt,
+        __v: league.__v
       }
-      updateLeague(updatedLeague)
+      renameLeague(updatedLeague, league._id)
       setIsEditing(false)
     }
 
@@ -98,113 +190,269 @@ function Main() {
       }))
     }
 
+    const handleJoin = (id) => {
+      join(id);
+    }
+
+    const handleLeave = (id) => {
+      leave(id);
+    }
+
     return (
       <div>
+        <div>
         <div className="d-flex text-body-secondary pt-3">
-          <img href={league.imageUrl} width="32" height="32" />
-          <p className="pb-3 mb-0 small lh-sm border-bottom">
-          
-          {isEditing ? (<input type="text" name="imageUrl" value={editedLeague.imageUrl} onChange={handleChange} />) : (<></>)}
-          <div className="card-body">
-            {isEditing ? (
-              <>
-                <input type="text" name="name" value={editedLeague.name} onChange={handleChange} />
-                <input type="text" name="draftDate" value={editedLeague.draftDate} onChange={handleChange} />
-                <input type="text" name="category" value={editedLeague.category} onChange={handleChange} />
-              </>
-            ) : (
-              <p className="card-text">
-                <strong>{item.title}</strong> <br />
-                <ul>
-                  <strong className="d-block text-gray-dark">{league.name}</strong>
-                  <strong className="d-block text-gray-dark">{league.number}</strong>
-                  <strong className="d-block text-gray-dark">{league.draftDate}</strong>
-                </ul>
-              </p>
-            )}
-            <div className="d-flex justify-content-between align-items-center">
-              <div className="btn-group">
-                {isEditing ? (
-                  <>
-                    <button type="button" className="btn btn-sm btn-outline-secondary" onClick={handleSave}>Save</button>
-                    <button type="button" className="btn btn-sm btn-outline-secondary" onClick={handleCancel}>Cancel</button>
-                  </>
-                ) : (
-                  <button type="button" className="btn btn-sm btn-outline-secondary" onClick={handleEdit}>Modify</button>
-                )}
-                <button type="button" className="btn btn-sm btn-outline-secondary" onClick={() => handleDelete(league.id)}>Delete</button>
+            <div className="card-body">
+              {isEditing ? (
+                <>
+                  <input type="text" name="name" value={editedLeague.name} onChange={handleChange} />
+                </>
+              ) : (
+                <p className="card-text">
+                  
+                <strong className="d-block text-gray-dark">Name: {league.name}</strong>
+                <strong className="d-block text-gray-dark">ID: {league._id}</strong>
+
+                    
+                  
+                </p>
+              )}
+              <div className="d-flex justify-content-between align-items-center">
+                  {isEditing ? (
+                    <>
+                      <div className="btn-group">
+
+                        <button type="button" className="btn btn-sm btn-outline-secondary" onClick={() => handleSave(league)}>Save</button>
+                        <button type="button" className="btn btn-sm btn-outline-secondary" onClick={handleCancel}>Cancel</button>
+                      </div>
+                    </>
+                  ) : (
+                    <div className="btn-group">
+
+                      <button type="button" className="btn btn-sm btn-outline-secondary" onClick={handleEdit}>Modify</button>
+                      <button type="button" className="btn btn-sm btn-outline-secondary" onClick={() => handleDelete(league._id)}>Delete</button>
+                      <button type="button" className="btn btn-sm btn-outline-secondary" onClick={() => handleJoin(league._id)}>Join</button>
+                     <button type="button" className="btn btn-sm btn-outline-secondary" onClick={() => handleLeave(league._id)}>Leave</button>
+                      
+                    </div>
+
+                  )}
+                </div>
               </div>
             </div>
+
+          
+
           </div>
 
-      </p>
-
-    </div>
-
-      </div>
+            </div>
+          
+      
     )
 
   }
+
+
+
+
+  function ShowMembers({ leagueId }) {
+    const [members, setMembers] = useState([]);
+  
+    useEffect(() => {
+      fetchMembers(leagueId);
+    }, [leagueId]);
+  
+    function fetchMembers(id) {
+      fetch(`http://localhost:3000/leagues/${id}/members`, {
+        credentials: 'include'
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          setMembers(data);
+          console.log(data)
+
+        })
+        .catch(error => {
+          console.error('Request failed:', error);
+        });
+    }
+    
+  
+    return (
+      <div>
+        {members.map((member, index) => (
+          <div key={index}>
+            {index === 0 ? (
+              <p>Owner: {member.user.username}</p>
+            ) : (
+              <p>Member: {member.user.username}</p>
+            )}
+          </div>
+        ))}
+      </div>
+    );
+  }    
+
+
+
 
 
 
   
   function Create() {
-    return(
+    const nav = useNavigate();
+  
+    const [leagueName, setLeagueName] = useState('');
+  
+    const goHome = () => {
+      nav('/');
+    };
+  
+    const login = async () => {
+      nav('/login');
+    };
+  
+    const register = async () => {
+      nav('/register');
+    };
+  
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      if (!leagueName) return; 
+      try {
+        addLeague({ name: leagueName });
+        setLeagueName(''); 
+        alert("League Created! Visit homepage to view.")
+      } catch (error) {
+        console.error('Error adding league:', error);
+      }
+    };
+  
+    return (
       <div>
-
+        <div className="d-flex h-100 text-center text-bg-dark">
+          <div className="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+            <header className="mb-auto">
+              <div>
+                <h3 className="float-md-start mb-0">Valorantasy</h3>
+                <nav className="nav nav-masthead justify-content-center float-md-end">
+                  <a className="nav-link fw-bold py-1 px-0 active" aria-current="page" href="#" onClick={goHome} style={{marginRight: '10px'}}>
+                    Home
+                  </a>
+                  <a className="nav-link fw-bold py-1 px-0 active" aria-current="page" href="#" onClick={login}>
+                    Login
+                  </a>
+                  <a
+                    className="nav-link fw-bold py-1 px-0"
+                    href="#"
+                    onClick={register}
+                    style={{ marginLeft: '10px', marginRight: '10px' }}>
+                    Sign Up
+                  </a>
+                  <a className="nav-link fw-bold py-1 px-0" href="#" onClick={logout} style={{ marginRight: '10px' }}>
+                    Log Out
+                  </a>
+                </nav>
+              </div>
+            </header>
+  
+            <main className="px-3">
+              <h1>Create a league</h1>
+              <p className="lead">Please enter the name of the league you want to create!</p>
+              <form onSubmit={handleSubmit}>
+                <div className="input-group mb-3">
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Enter league name"
+                    value={leagueName}
+                    onChange={(e) => setLeagueName(e.target.value)}
+                  />
+                  <button className="btn btn-outline-secondary" type="submit">
+                    Create League
+                  </button>
+                </div>
+              </form>
+            </main>
+  
+            <footer className="mt-auto text-white-50">
+              <p>Can't create a league? Please sign in to access feature.</p>
+            </footer>
+          </div>
+        </div>
       </div>
-    )
+    );
   }
+  
 
 
-  function Draft() {
-    return(
-      <div>
-
-      </div>
-    )
-  }
 
 
   function Home() {
+    const nav = useNavigate();
+
+    const create = async () => {
+      nav('/createLeague')
+    }
+
+    const login = async() => {
+      nav('/login')
+    }
+    const register = async() => {
+      nav('/register')
+    }
+
 
 
 
     return( 
       <div>
-        
+          <div className="d-flex h-100 text-center text-bg-dark">
+                <div className="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+                  <header className="mb-auto">
+                    <div>
+                      <h3 className="float-md-start mb-0">Valorantasy</h3>
+                      <nav className="nav nav-masthead justify-content-center float-md-end">
+                        <a className="nav-link fw-bold py-1 px-0 active" aria-current="page" href="#" onClick={login}>Login</a>
+                        <a className="nav-link fw-bold py-1 px-0" href="#" onClick={register}  style={{ marginLeft: '10px', marginRight: '10px'
+                         }}>Sign Up</a>
+                        <a className="nav-link fw-bold py-1 px-0" href="#" onClick={logout} style={{marginRight: '10px'}}>Log Out</a>
+                      </nav>
+                    </div>
+                  </header>
+
+                  <main className="px-3">
+                    <h1>League Page.</h1>
+                    <p className="lead">View all the leagues that are available to you. From here, you can create and join a league, make sure to not miss the draft date!</p>
+                    <p className="lead">
+                      <a href="#" className="btn btn-lg btn-light fw-bold border-white bg-white" onClick={create} style={{marginRight: '10px'}} >Create League</a>
+
+                    </p>
+                  </main>
+
+                  <footer className="mt-auto text-white-50">
+                    <p>Nothing showing up? Please log in or sign up to show leagues.</p>
+                  </footer>
+                </div>
+              </div>
+                  
 
       
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
-          <div className="container-fluid">
-          <img className="mb-4" src=".\images\logo-large.png" alt="" width="72" height="57" />
-            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                <li className="nav-item">
-                  <Link to="/">Home</Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/createLeague">Create A League</Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/leagues">Join A League</Link>
-                </li>
-                
-              </ul>
-            </div>
-          </div>
-        </nav>
-
-        <div className="my-3 p-3 bg-body rounded shadow-sm">
-    <h6 className="border-bottom pb-2 mb-0">User Leagues</h6>
-    {leagues.map((league, index) => (
-      <ShowLeagues league={league} index={index} />
-    ))}
-  </div>
+              <div className="my-3 p-3 bg-body rounded shadow-sm">
+                <h6 className="border-bottom pb-2 mb-0">Leagues</h6>
+                {leagues.map((league, index) => (
+                  <div key={index}>
+                    <ShowLeague league={league} />
+                    <h6 className="border-bottom pb-2 mb-0"><ShowMembers leagueId={league._id} /></h6>
+                  </div>
+                ))}
+              </div>
+        
 
       </div>
     )
@@ -231,27 +479,28 @@ function Main() {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({ username, password }),
+          credentials: 'include'
         });
     
         if (!response.ok) {
           const errorMessage = await response.json();
           throw new Error(errorMessage);
         }
-    
+        
+        
         console.log("Sign up successful!");
         
         nav('/')
+       window.location.reload();
         
       } catch (error) {
         console.error('Sign up failed:', error.message);
       }
-    
     }
 
 
     return(
       <div>
-        <link href="sign-in.css" rel="stylesheet" />
         <main className="form-signin w-100 m-auto">
           <form>
             <img className="mb-4" src="..\images\logo-large.png" alt="" width="72" height="57" />
@@ -272,7 +521,6 @@ function Main() {
             
           </form>
         </main>
-        <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
       </div>
     )
@@ -289,7 +537,7 @@ function Main() {
     
       const username = usernameInput.value;
       const password = passwordInput.value;
-    
+
       try {
         const response = await fetch('http://localhost:3000/auth/login', {
           method: 'POST',
@@ -297,7 +545,10 @@ function Main() {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({ username, password }),
+          credentials: 'include'
         });
+
+        console.log(response.json());
     
         if (!response.ok) {
           const errorMessage = await response.json();
@@ -305,7 +556,9 @@ function Main() {
         }
     
         console.log("Login successful!");
-        nav('/')
+        nav('/');
+        window.location.reload();
+
       } catch (error) {
         console.error('Login failed:', error.message);
       }
@@ -354,7 +607,6 @@ function Main() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/" element={<Home /> } />
-        <Route path="/draft" element={<Draft />} /> 
         <Route path="/createLeague" element={<Create />} />
       </Routes>
     </Router>

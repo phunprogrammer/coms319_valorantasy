@@ -74,10 +74,24 @@ const logout = async (req, res) => {
         httpOnly: true,
         expires: new Date(0)
     }).send();
-}
+};
+
+const loggedIn = async (req, res) => {
+    try {
+        const token = req.cookies.token;
+        if(!token) return res.json(false);
+
+        jwt.verify(token, process.env.JWT_SECRET);
+
+        res.json(true);
+    } catch(err) {
+        res.json(false);
+    }
+};
 
 module.exports = {
     register,
     login,
-    logout
+    logout,
+    loggedIn
 }
