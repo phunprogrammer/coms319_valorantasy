@@ -11,6 +11,7 @@ import {
 
 function Main() {
   const [leagues, setLeagues] = useState([]);
+  const [user, setUser] = useState("");
 
 
   useEffect(() => {
@@ -171,6 +172,7 @@ function Main() {
     })
     .then(response => response.json())
     .catch(error => console.error("Error fetching user's leagues: ", error));
+    setUser([])
     window.location.reload();
   }
 
@@ -303,33 +305,57 @@ function Main() {
 
   function ShowMembers({ leagueId }) {
     const [members, setMembers] = useState([]);
-  
+    
     useEffect(() => {
       fetchMembers(leagueId);
     }, [leagueId]);
-  
+    
     function fetchMembers(id) {
       fetch(`http://localhost:3000/leagues/${id}/members`, {
         credentials: 'include'
       })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        setMembers(data);
+      })
+      .catch(error => {
+        console.error('Request failed:', error);
+      });
+    }
+  
+    const handleKick = (userId) => {
+      const confirmKick = window.confirm("Are you sure you want to kick this member?");
+      if (confirmKick) {
+        fetch(`http://localhost:3000/leagues/${leagueId}`, {
+          credentials: 'include'
+        })
         .then(response => {
           if (!response.ok) {
-            throw new Error('Network response was not ok');
+            throw new Error('Failed to fetch league details');
           }
           return response.json();
         })
-        .then(data => {
-          setMembers(data);
-          console.log(data)
-
+        .then(league => {
+          console.log(league.owner)
+          console.log(user)
+          if (league.owner === user) {
+            kick(userId);
+          } else {
+            alert("Only the owner can kick members.");
+          }
         })
         .catch(error => {
-          console.error('Request failed:', error);
+          console.error('Error fetching league details:', error);
+          alert("Failed to fetch league details. Please try again later.");
         });
+      }
     }
-
-    
-  
+      
     return (
       <div>
         {members.map((member, index) => (
@@ -339,6 +365,7 @@ function Main() {
             ) : (
               <div>
                 <p>Member: {member.user.username} 
+                <button type="button" className="btn btn-sm btn-outline-secondary" onClick={() => handleKick(member.user._id)} style={{marginLeft: '10px'}}>Kick</button>
                 </p>
               </div>
             )}
@@ -347,6 +374,7 @@ function Main() {
       </div>
     );
   }
+  
 
 
 
@@ -452,6 +480,7 @@ function Main() {
     };
   
     const login = () => {
+      
       nav('/login');
     };
   
@@ -548,11 +577,13 @@ function Main() {
           throw new Error(errorMessage);
         }
         
-        
-        console.log("Sign up successful!");
+
+        const userData = await response.json();
+        const userId = userData._id;
+        setUser([userId]);
         
         nav('/')
-       window.location.reload();
+        window.location.reload();
         
       } catch (error) {
         console.error('Sign up failed:', error.message);
@@ -597,10 +628,10 @@ function Main() {
       event.preventDefault();
       const usernameInput = document.getElementById('floatingInput');
       const passwordInput = document.getElementById('floatingPassword');
-    
+      
       const username = usernameInput.value;
       const password = passwordInput.value;
-
+      
       try {
         const response = await fetch('http://localhost:3000/auth/login', {
           method: 'POST',
@@ -610,18 +641,18 @@ function Main() {
           body: JSON.stringify({ username, password }),
           credentials: 'include'
         });
-
-        console.log(response.json());
-    
+        
         if (!response.ok) {
           const errorMessage = await response.json();
           throw new Error(errorMessage);
         }
-    
-        console.log("Login successful!");
-        nav('/');
-        window.location.reload();
-
+        
+        const userData = await response.json();
+        const userId = userData._id;
+        setUser(userId);
+        console.log(user)
+        
+        nav('/'); // Navigate to the home page
       } catch (error) {
         console.error('Login failed:', error.message);
         alert("Username or password is incorrect.")
