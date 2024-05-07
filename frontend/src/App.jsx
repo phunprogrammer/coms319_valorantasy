@@ -12,6 +12,7 @@ import {
 function Main() {
   const [leagues, setLeagues] = useState([]);
 
+
   useEffect(() => {
     fetchLeagues();
   }, []);
@@ -44,34 +45,53 @@ function Main() {
  
 
   function deleteLeague(id) {
-    console.log(id)
+    console.log(id);
     fetch(`http://localhost:3000/users/leagues/${id}`, {
       method: 'DELETE',
       credentials: 'include'
-
     })
-    .then(response => fetchLeagues())
-    .catch(error => console.error("Error deleting league: ", error))
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      fetchLeagues(); 
+    })
+    .catch(error => {
+      console.error("Error deleting league: ", error);
+      alert("You must own the league in order to delete.");
+    });
   }
-
 
 
 
 
   function renameLeague(league, id) {
-    fetch(`http://localhost:3000/users/leagues/${id}/${league.name}` , {
+    fetch(`http://localhost:3000/users/leagues/${id}/${league.name}`, {
       method: 'PUT',
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
-
       },
       body: JSON.stringify(league),
-    }) 
-    .then(response => fetchLeagues())
-    .catch(error => console.error("Error updating league: ", error))
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      fetchLeagues(); 
+    })
+    .catch(error => {
+      console.error("Error updating league: ", error);
+      alert("You must own the league in order to rename.");
+    });
   }
-
+  
 
 
 
@@ -82,14 +102,24 @@ function Main() {
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
-
       },
       body: JSON.stringify(league),
     })
-      .then(response => fetchLeagues())
-      .catch(error => console.error("Error adding item: ", error));
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      fetchLeagues(); 
+      alert("League Created! Visit homepage to view.");
 
-
+    })
+    .catch(error => {
+      console.error("Error adding item: ", error);
+      alert("Please sign in to use create feature.");
+    });
   }
 
 
@@ -113,10 +143,20 @@ function Main() {
       headers: {
         'Content-Type': 'application/json',
       },
-
     })
-    .then(response => fetchLeagues())
-    .catch(error => console.error("Error joining league: ", error));
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      fetchLeagues();
+    })
+    .catch(error => {
+      console.error("Error leaving league: ", error);
+      alert("Must be apart of the league in order to leave.");
+    });
   }
 
 
@@ -131,9 +171,9 @@ function Main() {
     })
     .then(response => response.json())
     .catch(error => console.error("Error fetching user's leagues: ", error));
-    
     window.location.reload();
   }
+
 
 
 
@@ -195,8 +235,14 @@ function Main() {
     }
 
     const handleLeave = (id) => {
-      leave(id);
+      const confirmLeave = window.confirm("Are you sure you want to leave this league?");
+      if (confirmLeave) {
+        leave(id);
+      } else {
+      }
     }
+
+
 
     return (
       <div>
@@ -232,8 +278,8 @@ function Main() {
                       <button type="button" className="btn btn-sm btn-outline-secondary" onClick={handleEdit}>Modify</button>
                       <button type="button" className="btn btn-sm btn-outline-secondary" onClick={() => handleDelete(league._id)}>Delete</button>
                       <button type="button" className="btn btn-sm btn-outline-secondary" onClick={() => handleJoin(league._id)}>Join</button>
-                     <button type="button" className="btn btn-sm btn-outline-secondary" onClick={() => handleLeave(league._id)}>Leave</button>
-                      
+                      <button type="button" className="btn btn-sm btn-outline-secondary" onClick={() => handleLeave(league._id)}>Leave</button>
+
                     </div>
 
                   )}
@@ -281,6 +327,7 @@ function Main() {
           console.error('Request failed:', error);
         });
     }
+
     
   
     return (
@@ -290,13 +337,16 @@ function Main() {
             {index === 0 ? (
               <p>Owner: {member.user.username}</p>
             ) : (
-              <p>Member: {member.user.username}</p>
+              <div>
+                <p>Member: {member.user.username} 
+                </p>
+              </div>
             )}
           </div>
         ))}
       </div>
     );
-  }    
+  }
 
 
 
@@ -323,11 +373,10 @@ function Main() {
   
     const handleSubmit = async (e) => {
       e.preventDefault();
-      if (!leagueName) return; 
+      if (!leagueName) return;
       try {
         addLeague({ name: leagueName });
-        setLeagueName(''); 
-        alert("League Created! Visit homepage to view.")
+        setLeagueName('');
       } catch (error) {
         console.error('Error adding league:', error);
       }
@@ -395,67 +444,79 @@ function Main() {
 
   function Home() {
     const nav = useNavigate();
-
-    const create = async () => {
-      nav('/createLeague')
-    }
-
-    const login = async() => {
-      nav('/login')
-    }
-    const register = async() => {
-      nav('/register')
-    }
-
-
-
-
-    return( 
+  
+    
+  
+    const create = () => {
+      nav('/createLeague');
+    };
+  
+    const login = () => {
+      nav('/login');
+    };
+  
+    const register = () => {
+      nav('/register');
+    };
+  
+ 
+    return (
       <div>
-          <div className="d-flex h-100 text-center text-bg-dark">
-                <div className="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-                  <header className="mb-auto">
-                    <div>
-                      <h3 className="float-md-start mb-0">Valorantasy</h3>
-                      <nav className="nav nav-masthead justify-content-center float-md-end">
-                        <a className="nav-link fw-bold py-1 px-0 active" aria-current="page" href="#" onClick={login}>Login</a>
-                        <a className="nav-link fw-bold py-1 px-0" href="#" onClick={register}  style={{ marginLeft: '10px', marginRight: '10px'
-                         }}>Sign Up</a>
-                        <a className="nav-link fw-bold py-1 px-0" href="#" onClick={logout} style={{marginRight: '10px'}}>Log Out</a>
-                      </nav>
-                    </div>
-                  </header>
-
-                  <main className="px-3">
-                    <h1>League Page.</h1>
-                    <p className="lead">View all the leagues that are available to you. From here, you can create and join a league, make sure to not miss the draft date!</p>
-                    <p className="lead">
-                      <a href="#" className="btn btn-lg btn-light fw-bold border-white bg-white" onClick={create} style={{marginRight: '10px'}} >Create League</a>
-
-                    </p>
-                  </main>
-
-                  <footer className="mt-auto text-white-50">
-                    <p>Nothing showing up? Please log in or sign up to show leagues.</p>
-                  </footer>
-                </div>
+        <div className="d-flex h-100 text-center text-bg-dark">
+          <div className="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+            <header className="mb-auto">
+              <div>
+                <h3 className="float-md-start mb-0">Valorantasy</h3>
+                <nav className="nav nav-masthead justify-content-center float-md-end">
+                  <a className="nav-link fw-bold py-1 px-0 active" aria-current="page" href="#" onClick={login}>
+                    Login
+                  </a>
+                  <a
+                    className="nav-link fw-bold py-1 px-0"
+                    href="#"
+                    onClick={register}
+                    style={{ marginLeft: '10px', marginRight: '10px' }}>
+                    Sign Up
+                  </a>
+                  <a className="nav-link fw-bold py-1 px-0" href="#" onClick={logout} style={{ marginRight: '10px' }}>
+                    Log Out
+                  </a>
+                </nav>
               </div>
-                  
-
-      
-              <div className="my-3 p-3 bg-body rounded shadow-sm">
-                <h6 className="border-bottom pb-2 mb-0">Leagues</h6>
-                {leagues.map((league, index) => (
-                  <div key={index}>
-                    <ShowLeague league={league} />
-                    <h6 className="border-bottom pb-2 mb-0"><ShowMembers leagueId={league._id} /></h6>
-                  </div>
-                ))}
-              </div>
-        
-
+            </header>
+  
+            <main className="px-3">
+              <h1>League Page.</h1>
+              <p className="lead">
+                View all the leagues that are available to you. From here, you can create and join a league, make sure to not
+                miss the draft date!
+              </p>
+              <p className="lead">
+              <a href="#" className="btn btn-lg btn-light fw-bold border-white bg-white" onClick={create} style={{ marginRight: '10px' }}>
+                    Create League
+                  </a>
+              </p>
+            </main>
+  
+            <footer className="mt-auto text-white-50">
+              <p>Nothing showing up? Please log in or sign up to show leagues.</p>
+            </footer>
+          </div>
+        </div>
+  
+        <div className="my-3 p-3 bg-body rounded shadow-sm">
+          <h6 className="border-bottom pb-2 mb-0">Leagues</h6>
+          {leagues.map((league, index) => (
+            <div key={index}>
+              <ShowLeague league={league} />
+              <h6 className="border-bottom pb-2 mb-0">
+                <ShowMembers leagueId={league._id} />
+              </h6>
+            </div>
+          ))}
+        </div>
       </div>
-    )
+    );
   }
 
 
@@ -495,6 +556,8 @@ function Main() {
         
       } catch (error) {
         console.error('Sign up failed:', error.message);
+        alert("Username already taken.")
+
       }
     }
 
@@ -561,6 +624,7 @@ function Main() {
 
       } catch (error) {
         console.error('Login failed:', error.message);
+        alert("Username or password is incorrect.")
       }
     };
     
