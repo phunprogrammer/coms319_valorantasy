@@ -418,6 +418,9 @@ function Main() {
               <div>
                 <img src="./src/images/logo-large.png" alt="Valorantasy" width="300" className="float-md-start mb-0" />
                 <nav className="nav nav-masthead justify-content-center float-md-end">
+                <button className="btn btn-primary me-2" onClick={goHome}>
+                    Home
+                  </button>
                   <button className="btn btn-primary me-2" onClick={login}>
                     Login
                   </button>
@@ -481,6 +484,10 @@ function Main() {
       nav('/register');
     };
 
+    const studentInfo = () => {
+      alert("SE/ComS319 Construction of User Interfaces 05/08 Spring 2024\n Christian Ordaz: cordaz@iastate.edu \n Phu Nguyen: pnguyen2@iastate.edu \n Dr. Abraham N. Aldaco Gastelum \n Dr. Ali Jannesari")
+    }
+
 
     return (
       <div>
@@ -490,6 +497,9 @@ function Main() {
               <div>
                 <img src="./src/images/logo-large.png" alt="Valorantasy" width="300" className="float-md-start mb-0" />
                 <nav className="nav nav-masthead justify-content-center float-md-end">
+                <button className="btn btn-primary me-2" onClick={studentInfo}>
+                    Student Info
+                  </button>
                   <button className="btn btn-primary me-2" onClick={login}>
                     Login
                   </button>
@@ -597,7 +607,7 @@ function Main() {
 
             <button className="btn btn-primary w-100 py-2" type="submit" onClick={(e) => handleRegister(e)}>Sign up</button>
             <p className="mt-5 mb-3 text-body-secondary"> Already have an account?</p>
-            <Link to="/register"><button className="btn btn-primary w-100 py-2" type="submit" >Sign in</button></Link>
+            <Link to="/login"><button className="btn btn-primary w-100 py-2" type="submit" >Sign in</button></Link>
 
           </form>
         </main>
