@@ -11,12 +11,32 @@ import {
 
 function Main() {
   const [leagues, setLeagues] = useState([]);
-  const [user, setUser] = useState("");
 
 
   useEffect(() => {
     fetchLeagues();
   }, []);
+
+  async function getSelf() {
+      return await fetch('http://localhost:3000/users', {
+        credentials: 'include'
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json(); // Parse JSON data
+        })
+        .then(data => {
+          return data;
+        })
+        .catch(error => {
+          console.error('Request failed:', error);
+          reject(error);
+        });
+      
+  }
+  
 
   function fetchLeagues(userName) {
     fetch(`http://localhost:3000/getUserLeagues/${userName}`)
@@ -172,13 +192,20 @@ function Main() {
     })
     .then(response => response.json())
     .catch(error => console.error("Error fetching user's leagues: ", error));
-    setUser([])
     window.location.reload();
   }
 
 
 
-
+  const kick = async(userId, leagueId) => {
+      await fetch(`http://localhost:3000/users/leagues/${leagueId}/${userId}`, {
+      method: 'DELETE',
+      credentials: 'include'
+    })
+    .then(response => response.json())
+    .catch(error => console.error("Error kicking member: ", error));
+    window.location.reload();
+  }
 
 
 
@@ -342,12 +369,15 @@ function Main() {
         })
         .then(league => {
           console.log(league.owner)
-          console.log(user)
-          if (league.owner === user) {
-            kick(userId);
-          } else {
-            alert("Only the owner can kick members.");
-          }
+          getSelf().then(user => {
+            if (league.owner === user._id) {
+              kick(userId, leagueId);
+            } else {
+              alert("Only the owner can kick members.");
+            }
+          });
+
+          
         })
         .catch(error => {
           console.error('Error fetching league details:', error);
@@ -578,9 +608,7 @@ function Main() {
         }
         
 
-        const userData = await response.json();
-        const userId = userData._id;
-        setUser([userId]);
+       
         
         nav('/')
         window.location.reload();
@@ -597,7 +625,6 @@ function Main() {
       <div>
         <main className="form-signin w-100 m-auto">
           <form>
-            <img className="mb-4" src="..\images\logo-large.png" alt="" width="72" height="57" />
             <h1 className="h3 mb-3 fw-normal">Sign up</h1>
 
             <div className="form-floating">
@@ -620,12 +647,18 @@ function Main() {
     )
   }
 
+
+
+ 
+
+
   function Login() {
     const nav = useNavigate();
-
+    
 
     const handleLogin = async (event) => {
       event.preventDefault();
+
       const usernameInput = document.getElementById('floatingInput');
       const passwordInput = document.getElementById('floatingPassword');
       
@@ -647,16 +680,15 @@ function Main() {
           throw new Error(errorMessage);
         }
         
-        const userData = await response.json();
-        const userId = userData._id;
-        setUser(userId);
-        console.log(user)
+        
         
         nav('/'); // Navigate to the home page
+        window.location.reload();
       } catch (error) {
         console.error('Login failed:', error.message);
         alert("Username or password is incorrect.")
       }
+
     };
     
 
@@ -666,7 +698,6 @@ function Main() {
         <link href="sign-in.css" rel="stylesheet" />
         <main className="form-signin w-100 m-auto">
           <form>
-            <img className="mb-4" src="frontend\src\images\logo-large.png" alt="" width="72" height="57" />
             <h1 className="h3 mb-3 fw-normal">Sign in</h1>
 
             <div className="form-floating">
