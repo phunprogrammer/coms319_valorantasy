@@ -595,9 +595,9 @@ function Main() {
               <label htmlFor="floatingPassword">Password</label>
             </div>
 
-            <button className="btn btn-primary w-100 py-2" type="submit" onClick={(e) => handleLogin(e)}>Sign in</button>
-            <p className="mt-5 mb-3 text-body-secondary"> Don't have an account?</p>
-            <Link to="/register"><button className="btn btn-primary w-100 py-2" type="submit" >Sign up</button></Link>
+            <button className="btn btn-primary w-100 py-2" type="submit" onClick={(e) => handleRegister(e)}>Sign up</button>
+            <p className="mt-5 mb-3 text-body-secondary"> Already have an account?</p>
+            <Link to="/register"><button className="btn btn-primary w-100 py-2" type="submit" >Sign in</button></Link>
 
           </form>
         </main>
