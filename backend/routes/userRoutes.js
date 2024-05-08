@@ -6,7 +6,8 @@ const {
     deleteUserLeague,
     joinLeague,
     renameLeague,
-    deleteMember
+    deleteMember,
+    getCurrentUser
 } = require('../controllers/userController.js');
 const auth = require('../middleware/authMiddleware');
 
@@ -17,5 +18,6 @@ router.put('/leagues/:id/:name', auth(["user", "admin"]), renameLeague);
 router.delete('/leagues/:id', auth(["user", "admin"]), deleteUserLeague);
 router.delete('/leagues/:id/:userId', auth(["user", "admin"]), deleteMember);
 router.post('/leagues/:name', auth(["user", "admin"]), postUserLeague);
+router.get('', auth(["user", "admin"]), getCurrentUser);
 
 module.exports = router;

@@ -138,6 +138,16 @@ const deleteMember = async (req, res) => {
     }
 };
 
+const getCurrentUser = async (req, res) => {
+    try{
+        const user = await User.findById(req.user);
+        res.json(user);
+    } catch(err) {
+        console.error(err);
+        res.status(500).send();
+    }
+}
+
 module.exports = {
     getUserOwnedLeagues,
     getUserJoinedLeagues,
@@ -145,5 +155,6 @@ module.exports = {
     deleteUserLeague,
     joinLeague,
     renameLeague,
-    deleteMember
+    deleteMember,
+    getCurrentUser
 };
